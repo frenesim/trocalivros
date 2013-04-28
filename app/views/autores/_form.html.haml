@@ -1,0 +1,8 @@
+= form_for @autore, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :nome, :class => 'control-label'
+    .controls
+      = f.text_field :nome, :class => 'text_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), autores_path, :class => 'btn'
