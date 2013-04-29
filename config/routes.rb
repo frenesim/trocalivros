@@ -8,7 +8,7 @@ Trocalivros::Application.routes.draw do
   resources :livros
 
 
-  root :to => 'livros#index'
+  root :to => 'home_page#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
