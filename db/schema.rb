@@ -11,10 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426235557) do
+ActiveRecord::Schema.define(:version => 20130430223200) do
 
   create_table "autores", :force => true do |t|
     t.string   "nome"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "disciplinas", :force => true do |t|
+    t.string   "disciplina"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -29,10 +35,19 @@ ActiveRecord::Schema.define(:version => 20130426235557) do
     t.string   "nome"
     t.integer  "editora_id"
     t.integer  "ano_escolaridade"
-    t.integer  "autor_id"
+    t.integer  "autore_id"
     t.integer  "preco"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "disciplina_id"
   end
+
+  add_index "livros", ["autore_id"], :name => "livros_autore_id_fk"
+  add_index "livros", ["disciplina_id"], :name => "livros_disciplina_id_fk"
+  add_index "livros", ["editora_id"], :name => "livros_editora_id_fk"
+
+  add_foreign_key "livros", "autores", :name => "livros_autore_id_fk"
+  add_foreign_key "livros", "disciplinas", :name => "livros_disciplina_id_fk"
+  add_foreign_key "livros", "editoras", :name => "livros_editora_id_fk"
 
 end

@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Disciplina:
+  = @disciplina.disciplina
+
+= link_to 'Edit', edit_disciplina_path(@disciplina)
+\|
+= link_to 'Back', disciplinas_path

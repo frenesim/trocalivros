@@ -4,7 +4,7 @@ class CreateLivros < ActiveRecord::Migration
       t.string :nome
       t.integer :editora_id
       t.integer :ano_escolaridade
-      t.integer :autor_id
+      t.integer :autore_id
       t.integer :preco
 
       t.timestamps

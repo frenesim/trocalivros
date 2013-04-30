@@ -5,6 +5,7 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:disciplina_id)
       %th= model_class.human_attribute_name(:nome)
       %th= model_class.human_attribute_name(:editora_id)
       %th= model_class.human_attribute_name(:ano_escolaridade)
@@ -16,6 +17,7 @@
     - @livros.each do |livro|
       %tr
         %td= link_to livro.id, livro_path(livro)
+        %td= livro.disciplina_id
         %td= livro.nome
         %td= livro.editora_id
         %td= livro.ano_escolaridade

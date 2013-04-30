@@ -1,0 +1,19 @@
+%h1 Listing disciplinas
+
+%table
+  %tr
+    %th Disciplina
+    %th
+    %th
+    %th
+
+  - @disciplinas.each do |disciplina|
+    %tr
+      %td= disciplina.disciplina
+      %td= link_to 'Show', disciplina
+      %td= link_to 'Edit', edit_disciplina_path(disciplina)
+      %td= link_to 'Destroy', disciplina, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Disciplina', new_disciplina_path
