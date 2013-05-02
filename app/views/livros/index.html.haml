@@ -1,6 +1,7 @@
 - model_class = Livro
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize
+  =render :partial => "simple_search_form"
 %table.table.table-striped
   %thead
     %tr
@@ -9,7 +10,7 @@
       %th= model_class.human_attribute_name(:nome)
       %th= model_class.human_attribute_name(:editora_id)
       %th= model_class.human_attribute_name(:ano_escolaridade)
-      %th= model_class.human_attribute_name(:autor_id)
+      %th= model_class.human_attribute_name(:autore_id)
       %th= model_class.human_attribute_name(:preco)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
@@ -17,11 +18,11 @@
     - @livros.each do |livro|
       %tr
         %td= link_to livro.id, livro_path(livro)
-        %td= livro.disciplina_id
+        %td= livro.disciplina.nome
         %td= livro.nome
-        %td= livro.editora_id
+        %td= livro.editora.nome
         %td= livro.ano_escolaridade
-        %td= livro.autor_id
+        %td= livro.autore.nome
         %td= livro.preco
         %td=l livro.created_at
         %td

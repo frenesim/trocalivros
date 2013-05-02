@@ -2,7 +2,7 @@ class LivrosController < ApplicationController
   # GET /livros
   # GET /livros.json
   def index
-    @livros = Livro.all
+    @livros = Livro.simple_search params[:simple_search]
 
     respond_to do |format|
       format.html # index.html.erb

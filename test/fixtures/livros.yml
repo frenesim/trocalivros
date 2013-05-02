@@ -4,12 +4,12 @@ one:
   nome: MyString
   editora_id: 1
   ano_escolaridade: 1
-  autor_id: 1
+  autore_id: 1
   preco: 1
 
 two:
   nome: MyString
   editora_id: 1
   ano_escolaridade: 1
-  autor_id: 1
+  autore_id: 1
   preco: 1

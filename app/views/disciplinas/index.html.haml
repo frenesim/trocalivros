@@ -9,7 +9,7 @@
 
   - @disciplinas.each do |disciplina|
     %tr
-      %td= disciplina.disciplina
+      %td= disciplina.nome
       %td= link_to 'Show', disciplina
       %td= link_to 'Edit', edit_disciplina_path(disciplina)
       %td= link_to 'Destroy', disciplina, :method => :delete, :data => { :confirm => 'Are you sure?' }
