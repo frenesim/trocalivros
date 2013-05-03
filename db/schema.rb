@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20130430223200) do
   end
 
   create_table "disciplinas", :force => true do |t|
-    t.string   "disciplina"
+    t.string   "nome"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
