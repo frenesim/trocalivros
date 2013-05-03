@@ -1,7 +1,10 @@
 .simple_search_form
   .row-fluid
   .span2
-  =form_tag livros_path, :method => "get" do
-    = label_tag :simple_search, "Procuro:"
-    = text_field_tag :simple_search, params[:simple_search]
-    = submit_tag "Search", :name => nil
+  = search_form_for @search do |f|
+    .control-group
+      = f.label :nome_cont, :class => 'control-label'
+      .controls
+        = f.text_field :nome_cont, :class => 'text_field'
+    = f.submit nil, :class => 'btn btn-primary'
+
