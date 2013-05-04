@@ -9,14 +9,15 @@
     = csrf_meta_tags
 
   %body
-    #user_nav
+    #user-nav
       -if user_signed_in?
         Bem vindo #{current_user.email}
-        =link_to "Sign out", destroy_user_session_path, :method => :delete
+        =link_to "Sair", destroy_user_session_path, :method => :delete
       -else
-        #{link_to "Log in", new_user_session_path} ou #{link_to "Regista-te", new_user_registration_path}
-
-
+        #{link_to "Entrar", new_user_session_path} ou #{link_to "Regista-te", new_user_registration_path}
+    .navbar
+      .navbar-inner
+        =render_navigation
     =yield
 
   %footer

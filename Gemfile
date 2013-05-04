@@ -38,7 +38,6 @@ end
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
-gem 'simple-navigation-bootstrap'
 gem "cancan"
 
 gem 'foreigner'
@@ -47,6 +46,8 @@ gem 'haml-rails'
 gem 'activeadmin'
 gem 'devise'
 
+gem 'simple-navigation-bootstrap'
+gem "simple-navigation"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

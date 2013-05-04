@@ -246,6 +246,7 @@ DEPENDENCIES
   rspec
   sass-rails (~> 3.2.3)
   seed_dump (~> 0.4.2)
+  simple-navigation
   simple-navigation-bootstrap
   therubyracer
   twitter-bootstrap-rails
