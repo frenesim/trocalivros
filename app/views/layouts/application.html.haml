@@ -4,24 +4,30 @@
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title= content_for?(:title) ? yield(:title) : "Permuta de Livros"
+    %title= content_for?(:title) ? yield(:title) : "Troca"
     = stylesheet_link_tag "application", :media => "all"
     = csrf_meta_tags
-
   %body
-    #user-nav
-      -if user_signed_in?
-        Bem vindo #{current_user.email}
-        =link_to "Sair", destroy_user_session_path, :method => :delete
-      -else
-        #{link_to "Entrar", new_user_session_path} ou #{link_to "Regista-te", new_user_registration_path}
-    .navbar
+    .row-fluid
+      #user-nav
+        -if user_signed_in?
+          Bem vindo #{current_user.email}
+          =link_to "Sair", destroy_user_session_path, :method => :delete
+        -else
+          #{link_to "Entrar", new_user_session_path} ou #{link_to "Regista-te", new_user_registration_path}
+    .navbar.navbar-fluid-top
       .navbar-inner
-        =render_navigation
-    =yield
+        .container-fluid
+          %a.brand(href="#") Troca de Livros
+          .container.nav-collapse
+            =render_navigation :expand_all => true, :renderer => :bootstrap
+    .container-fluid
+      .span2
+        = bootstrap_flash
+        =yield
 
   %footer
-    %p &copy; Xaricofugas 2013
+  %p &copy; Xaricofugas 2013
 
 
 = javascript_include_tag "application"
