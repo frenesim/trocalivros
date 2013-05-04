@@ -7,6 +7,7 @@ gem 'rails', '3.2.13'
 
 
 group :development, :test do
+  gem 'therubyracer'
   gem 'mysql2'
   gem 'database_cleaner'
   gem 'capybara'
@@ -42,6 +43,9 @@ gem "cancan"
 
 gem 'foreigner'
 gem 'haml-rails'
+
+gem 'activeadmin'
+gem 'devise'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
