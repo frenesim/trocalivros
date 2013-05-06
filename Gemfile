@@ -47,7 +47,7 @@ gem 'activeadmin'
 gem 'devise'
 
 gem 'simple-navigation-bootstrap'
-gem "simple-navigation"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

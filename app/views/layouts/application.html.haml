@@ -8,24 +8,23 @@
     = stylesheet_link_tag "application", :media => "all"
     = csrf_meta_tags
   %body
+    #user-log
+      -if user_signed_in?
+        Bem vindo #{current_user.email}
+        =link_to "Sair", destroy_user_session_path, :method => :delete
+      -else
+        #{link_to "Entrar", new_user_session_path} ou #{link_to "Regista-te", new_user_registration_path}
     .row-fluid
-      #user-nav
-        -if user_signed_in?
-          Bem vindo #{current_user.email}
-          =link_to "Sair", destroy_user_session_path, :method => :delete
-        -else
-          #{link_to "Entrar", new_user_session_path} ou #{link_to "Regista-te", new_user_registration_path}
     .navbar.navbar-fluid-top
       .navbar-inner
         .container-fluid
           %a.brand(href="#") Troca de Livros
-          .container.nav-collapse
+          .container.nav-colapse
             =render_navigation :expand_all => true, :renderer => :bootstrap
     .container-fluid
       .span2
         = bootstrap_flash
         =yield
-
   %footer
   %p &copy; Xaricofugas 2013
 

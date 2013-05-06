@@ -1,19 +1,24 @@
 // Example using 'Cerulean' bootswatch
 //
 // First import journal variables
-@import "bootswatch/spruce/variables";
+@import "bootswatch/cerulean/variables";
 
 // Then bootstrap itself
 @import "bootstrap";
 
 // Bootstrap body padding for fixed navbar
 body { padding-top: 30px; }
-
+footer {padding-top: 30px;}
+#user-log {
+  margin-top: -25px;
+  padding-right: 50px;
+  float: right;
+}
 // Responsive styles go here in case you want them
 @import "bootstrap-responsive";
 
 // And finally bootswatch style itself
-@import "bootswatch/spruce/bootswatch";
+@import "bootswatch/cerulean/bootswatch";
 
 // Whatever application styles you have go last
 @import "jquery.ui.all";
