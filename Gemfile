@@ -7,7 +7,6 @@ gem 'rails', '3.2.13'
 
 
 group :development, :test do
-  gem 'therubyracer'
   gem 'mysql2'
   gem 'database_cleaner'
   gem 'capybara'
@@ -27,12 +26,11 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '~> 1.0.3'
-  gem 'twitter-bootstrap-rails'
+  gem 'sass-rails'
   gem 'bootstrap-sass'
   gem 'bootswatch-rails'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '~> 1.0.3'
 end
 
 gem 'jquery-rails'

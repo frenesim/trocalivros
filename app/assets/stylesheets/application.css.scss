@@ -1,7 +1,7 @@
 // Example using 'Cerulean' bootswatch
 //
 // First import journal variables
-@import "bootswatch/cerulean/variables";
+@import "bootswatch/readable/variables";
 
 // Then bootstrap itself
 @import "bootstrap";
@@ -18,8 +18,8 @@ footer {padding-top: 30px;}
 @import "bootstrap-responsive";
 
 // And finally bootswatch style itself
-@import "bootswatch/cerulean/bootswatch";
+@import "bootswatch/readable/bootswatch";
 
 // Whatever application styles you have go last
-@import "jquery.ui.all";
+
 
