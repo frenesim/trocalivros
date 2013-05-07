@@ -1,6 +1,5 @@
 .simple_search_form
   .row-fluid
-  .span2
   =form_tag livros_path, :method => "get" do
     = label_tag :simple_search, "Procuro:"
     = text_field_tag :simple_search, params[:simple_search]
