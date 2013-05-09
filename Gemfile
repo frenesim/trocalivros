@@ -8,6 +8,7 @@ gem 'rails', '3.2.13'
 
 group :development, :test do
   gem 'mysql2'
+  gem 'foreigner'
   gem 'database_cleaner'
   gem 'capybara'
   gem 'launchy'
@@ -38,7 +39,6 @@ gem 'jquery-ui-rails'
 
 gem "cancan"
 
-gem 'foreigner'
 gem 'haml-rails'
 
 gem 'activeadmin'
