@@ -7,6 +7,7 @@
       %th= model_class.human_attribute_name(:ano_escolaridade)
       %th= model_class.human_attribute_name("Autor")
       %th= model_class.human_attribute_name("Preço")
+      %th= model_class.human_attribute_name("Utilizador")
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @livros.each do |livro|
@@ -17,6 +18,9 @@
         %td= livro.ano_escolaridade
         %td= livro.autore.nome
         %td= livro.preco
+        %td
+          = link_to t('.Contacto', :default => t("helpers.links.edit")), edit_livro_path(livro), :class => 'btn btn-info'
+          .btn.btn-info= livro.user_id
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_livro_path(livro), :class => 'btn btn-mini'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), livro_path(livro), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'

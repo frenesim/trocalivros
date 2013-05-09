@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130504144452) do
+ActiveRecord::Schema.define(:version => 20130509170425) do
 
   create_table "autores", :force => true do |t|
     t.string   "nome"
@@ -40,11 +40,13 @@ ActiveRecord::Schema.define(:version => 20130504144452) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "disciplina_id"
+    t.integer  "user_id"
   end
 
   add_index "livros", ["autore_id"], :name => "livros_autore_id_fk"
   add_index "livros", ["disciplina_id"], :name => "livros_disciplina_id_fk"
   add_index "livros", ["editora_id"], :name => "livros_editora_id_fk"
+  add_index "livros", ["user_id"], :name => "livros_user_id_fk"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -59,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20130504144452) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "phone_number"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -67,5 +70,6 @@ ActiveRecord::Schema.define(:version => 20130504144452) do
   add_foreign_key "livros", "autores", :name => "livros_autore_id_fk"
   add_foreign_key "livros", "disciplinas", :name => "livros_disciplina_id_fk"
   add_foreign_key "livros", "editoras", :name => "livros_editora_id_fk"
+  add_foreign_key "livros", "users", :name => "livros_user_id_fk"
 
 end

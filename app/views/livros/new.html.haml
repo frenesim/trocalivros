@@ -1,7 +1,4 @@
 - model_class = Livro
 .page-header
   %h1=t '.title', :default => "Manual Escolar", :model => model_class.model_name.human
--if user_signed_in?
   = render :partial => "form"
--else
-  =render :partial => "user_sign_up"

@@ -4,6 +4,7 @@ class Livro < ActiveRecord::Base
   belongs_to :autore
   belongs_to :disciplina
   belongs_to :editora
+  belongs_to :user
 
 
   scope :search, lambda { |search| where("nome LIKE ?", "%#{search}%")}

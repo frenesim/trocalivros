@@ -15,3 +15,18 @@ en:
       save: "Save"
       new: "New"
       delete: "Delete"
+
+pt:
+  helpers:
+    actions: "Actions"
+    links:
+      back: "Voltar"
+      cancel: "Cancelar"
+      confirm: "Confirma?"
+      destroy: "Apagar"
+      new: "Novo"
+    titles:
+      edit: "Editar"
+      save: "Gravar"
+      new: "Novo"
+      delete: "Apagar"

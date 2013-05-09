@@ -1,6 +1,9 @@
 class LivrosController < ApplicationController
   # GET /livros
   # GET /livros.json
+
+  before_filter :authenticate_user!, :except => [:show, :index]
+
   def index
     @livros = Livro.simple_search params[:simple_search]
 
@@ -24,12 +27,12 @@ class LivrosController < ApplicationController
   # GET /livros/new
   # GET /livros/new.json
   def new
-    @livro = Livro.new
+      @livro = Livro.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @livro }
-    end
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @livro }
+      end
   end
 
   # GET /livros/1/edit

@@ -1,3 +1,3 @@
 class Disciplina < ActiveRecord::Base
-  attr_accessible :disciplina
+  attr_accessible :nome
 end
