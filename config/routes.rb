@@ -4,15 +4,11 @@ Trocalivros::Application.routes.draw do
 
   resources :disciplinas
 
-
   resources :autores
-
 
   resources :editoras
 
-
   resources :livros
-
 
   root :to => 'livros#index'
 
