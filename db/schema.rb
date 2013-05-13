@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509170425) do
+ActiveRecord::Schema.define(:version => 20130513133013) do
 
   create_table "autores", :force => true do |t|
     t.string   "nome"
@@ -37,10 +37,14 @@ ActiveRecord::Schema.define(:version => 20130509170425) do
     t.integer  "ano_escolaridade"
     t.integer  "autore_id"
     t.integer  "preco"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "disciplina_id"
     t.integer  "user_id"
+    t.string   "photo1_file_name"
+    t.string   "photo1_content_type"
+    t.integer  "photo1_file_size"
+    t.datetime "photo1_updated_at"
   end
 
   add_index "livros", ["autore_id"], :name => "livros_autore_id_fk"

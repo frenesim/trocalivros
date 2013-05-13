@@ -22,6 +22,10 @@
   %strong= model_class.human_attribute_name(:preco) + ':'
   %br
   = @livro.preco
+%p
+  %strong= model_class.human_attribute_name(:photo1) + ':'
+  %br
+  = image_tag @livro.photo1.url
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), livros_path, :class => 'btn'
