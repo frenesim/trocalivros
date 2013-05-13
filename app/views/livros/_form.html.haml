@@ -6,11 +6,11 @@
   .control-group
     = f.label :disciplina_id, :class => 'control-label'
     .controls
-      = f.number_field :disciplina_id, :class => 'text_field'
+      = collection_select :livro, :disciplina_id, Disciplina.all, "id", "nome"
   .control-group
     = f.label :editora_id, :class => 'control-label'
     .controls
-      = f.number_field :editora_id, :class => 'number_field'
+      = collection_select :livro, :editora_id, Editora.all, "id", "nome"
   .control-group
     = f.label :ano_escolaridade, :class => 'control-label'
     .controls
@@ -18,11 +18,15 @@
   .control-group
     = f.label :autore_id, :class => 'control-label'
     .controls
-      = f.number_field :autore_id, :class => 'number_field'
+      = collection_select :livro, :autore_id, Autore.all, "id", "nome"
   .control-group
     = f.label :preco, :class => 'control-label'
     .controls
       = f.number_field :preco, :class => 'number_field'
+  .control-group
+    = f.label :photos, :class => 'control-label'
+    .controls
+      = f.file_field :photo1, :class => 'photo_field'
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), livros_path, :class => 'btn'

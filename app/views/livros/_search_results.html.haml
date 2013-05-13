@@ -1,6 +1,7 @@
 %table.table.table-striped
   %thead
     %tr
+      %th= model_class.human_attribute_name(:photo1)
       %th= model_class.human_attribute_name(:disciplina_id)
       %th= model_class.human_attribute_name(:nome)
       %th= model_class.human_attribute_name(:ano_escolaridade)
@@ -11,6 +12,7 @@
   %tbody
     - @livros.each do |livro|
       %tr
+        %td= image_tag livro.photo1.url :thumb
         %td= link_to livro.disciplina.nome, livro_path(livro)
         %td= livro.nome
         %td= livro.ano_escolaridade
