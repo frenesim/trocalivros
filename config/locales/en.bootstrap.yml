@@ -10,6 +10,7 @@ en:
       confirm: "Are you sure?"
       destroy: "Delete"
       new: "New"
+      details: "Details"
     titles:
       edit: "Edit"
       save: "Save"
@@ -18,13 +19,15 @@ en:
 
 pt:
   helpers:
-    actions: "Actions"
+    actions: "Ações"
     links:
       back: "Voltar"
       cancel: "Cancelar"
       confirm: "Confirma?"
       destroy: "Apagar"
       new: "Novo"
+      edit: "Editar"
+      details: "Detalhes"
     titles:
       edit: "Editar"
       save: "Gravar"
