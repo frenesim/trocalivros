@@ -64,5 +64,7 @@ pt:
       signed_in: "Entrada com sucesso"
       signed_out: "Saída com sucesso."
     registrations:
-          destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
-          signed_up: "Bem vindo! O seu registo foi bem sucedido."
+      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
+      signed_up: "Bem vindo! O seu registo foi bem sucedido."
+    shared:
+      forgot_password: "Esqueceu-se da palavra passe?"

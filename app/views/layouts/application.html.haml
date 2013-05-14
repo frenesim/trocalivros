@@ -21,6 +21,7 @@
           %a.brand(href="#") Troca de Livros
           .container-nav
             =render_navigation :expand_all => true, :renderer => :bootstrap
+    =render :partial => "layouts/flashes"
     .container-fluid
       =yield
   %footer

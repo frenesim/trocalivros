@@ -6,7 +6,7 @@ class LivrosController < ApplicationController
 
   def index
     @livros = Livro.simple_search params[:simple_search]
-
+    flash[:success] = "Woohoo!"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @livros }

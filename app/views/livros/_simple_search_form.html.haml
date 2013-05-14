@@ -2,5 +2,6 @@
   .row-fluid
   =form_tag livros_path, :method => "get" do
     = label_tag :simple_search, "Procuro:"
-    = text_field_tag :simple_search, params[:simple_search]
+    = text_field_tag :simple_search, params[:simple_search], :class=>"input-large search-query"
     = submit_tag "Search", :name => nil
+
