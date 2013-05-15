@@ -76,7 +76,7 @@ class DisciplinasController < ApplicationController
     @disciplina.destroy
 
     respond_to do |format|
-      format.html { redirect_to disciplinas_url }
+      format.html { redirect_to disciplinas_url, alert: 'Disciplina was successfully deleted.'  }
       format.json { head :no_content }
     end
   end
