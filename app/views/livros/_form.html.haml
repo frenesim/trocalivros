@@ -6,11 +6,11 @@
   .control-group
     = f.label :disciplina_id, :class => 'control-label'
     .controls
-      = collection_select :livro, :disciplina_id, Disciplina.all, "id", "nome"
+      = collection_select :livro, :disciplina_id, Disciplina.all, "id", "nome", {:include_blank => true}
   .control-group
     = f.label :editora_id, :class => 'control-label'
     .controls
-      = collection_select :livro, :editora_id, Editora.all, "id", "nome"
+      = collection_select :livro, :editora_id, Editora.all, "id", "nome", {:include_blank => true}
   .control-group
     = f.label :ano_escolaridade, :class => 'control-label'
     .controls
@@ -18,7 +18,7 @@
   .control-group
     = f.label :autore_id, :class => 'control-label'
     .controls
-      = collection_select :livro, :autore_id, Autore.all, "id", "nome"
+      = collection_select :livro, :autore_id, Autore.all, "id", "nome", {:include_blank => true}
   .control-group
     = f.label :preco, :class => 'control-label'
     .controls
