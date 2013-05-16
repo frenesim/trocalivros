@@ -64,7 +64,17 @@ pt:
       signed_in: "Entrada com sucesso"
       signed_out: "Saída com sucesso."
     registrations:
-      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
+      destroyed: "Adeus! A sua conta foi cancelada com sucesso. Esperamos por si novamente."
       signed_up: "Bem vindo! O seu registo foi bem sucedido."
     shared:
       forgot_password: "Esqueceu-se da palavra passe?"
+    failure:
+      already_authenticated: "A sua entrada já está autenticado."
+      inactive: "A sua conta ainda não está ativada."
+      invalid: "Email ou palavra chave inválida."
+      invalid_token: "Autenticação do token inválida."
+      locked: "A sua conta está bloqueada."
+      not_found_in_database: "Email ou palavra chave inválida."
+      timeout: "A sua sessão expirou, por favor volte a entrar."
+      unauthenticated: "Necessita de estar autenticado para continuar."
+      unconfirmed: "Tem que confirmar a sua conta antes de continuar."
