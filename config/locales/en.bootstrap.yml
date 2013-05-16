@@ -33,3 +33,6 @@ pt:
       save: "Gravar"
       new: "Novo"
       delete: "Apagar"
+  time:
+    formats:
+      default: "%d-%b-%Y - %H:%M:%S"

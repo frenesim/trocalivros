@@ -1,6 +1,6 @@
 - model_class = Disciplina
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize
+  %h1=I18n.t '.title', :default => model_class.model_name.human.pluralize
 %table.table.table-striped
   %thead
     %tr
