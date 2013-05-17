@@ -3,6 +3,7 @@ require 'test_helper'
 class EditorasControllerTest < ActionController::TestCase
   setup do
     @editora = editoras(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do

@@ -1,5 +1,5 @@
 class Livro < ActiveRecord::Base
-  attr_accessible :ano_escolaridade, :autore_id, :editora_id, :nome, :preco, :disciplina_id, :photo1
+  attr_accessible :ano_escolaridade, :autore_id, :editora_id, :nome, :preco, :disciplina_id, :user_id, :photo1
 
   has_attached_file :photo1, :styles => { :medium => "300x300>", :thumb => "50x100>" }, :default_url => "/images/:style/missing.png"
 
@@ -7,7 +7,6 @@ class Livro < ActiveRecord::Base
   belongs_to :disciplina
   belongs_to :editora
   belongs_to :user
-
 
   scope :search, lambda { |search| where("nome LIKE ?", "%#{search}%")}
 

@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  disciplina: MyString
+  nome: "Portugues_teste"
 
 two:
-  disciplina: MyString
+  nome: "matemática_teste"

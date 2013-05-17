@@ -15,13 +15,15 @@ group :development, :test do
   gem 'nifty-generators'
   gem 'immigrant'
   gem "seed_dump", "~> 0.4.2"
+  gem 'rspec-rails', '~> 2.0'
 end
 
 group :test do
-  gem 'cucumber-rails'
+  gem "minitest"
+  gem "minitest-reporters", '>= 0.5.0'
+  gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'rspec'
-  gem 'mocha'
+  gem 'mocha', :require => false
 end
 
 # Gems used only for assets and not required

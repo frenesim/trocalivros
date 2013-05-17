@@ -1,0 +1,22 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+pt:
+  helpers:
+    actions: "Ações"
+    links:
+      back: "Voltar"
+      cancel: "Cancelar"
+      confirm: "Confirma?"
+      destroy: "Apagar"
+      new: "Novo"
+      edit: "Editar"
+      details: "Detalhes"
+    titles:
+      edit: "Editar"
+      save: "Gravar"
+      new: "Novo"
+      delete: "Apagar"
+  time:
+    formats:
+      default: "%d-%b-%Y - %H:%M:%S"

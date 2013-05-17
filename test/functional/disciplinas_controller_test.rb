@@ -3,6 +3,7 @@ require 'test_helper'
 class DisciplinasControllerTest < ActionController::TestCase
   setup do
     @disciplina = disciplinas(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do
@@ -18,7 +19,7 @@ class DisciplinasControllerTest < ActionController::TestCase
 
   test "should create disciplina" do
     assert_difference('Disciplina.count') do
-      post :create, disciplina: { disciplina: @disciplina.disciplina }
+      post :create, disciplina: { nome: @disciplina.nome }
     end
 
     assert_redirected_to disciplina_path(assigns(:disciplina))
@@ -35,7 +36,7 @@ class DisciplinasControllerTest < ActionController::TestCase
   end
 
   test "should update disciplina" do
-    put :update, id: @disciplina, disciplina: { disciplina: @disciplina.disciplina }
+    put :update, id: @disciplina, disciplina: { nome: @disciplina.nome }
     assert_redirected_to disciplina_path(assigns(:disciplina))
   end
 

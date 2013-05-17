@@ -1,15 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  nome: MyString
+  nome: "Belo Livro"
   editora_id: 1
   ano_escolaridade: 1
   autore_id: 1
-  preco: 1
+  preco: 50
+  disciplina_id: 1
+  user_id: 1
 
 two:
-  nome: MyString
-  editora_id: 1
-  ano_escolaridade: 1
-  autore_id: 1
-  preco: 1
+  nome: "mágico titulo"
+  editora_id: 2
+  ano_escolaridade: 2
+  autore_id: 2
+  preco: 100
+  disciplina_id: 2
+  user_id: 2
