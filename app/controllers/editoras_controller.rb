@@ -1,6 +1,9 @@
 class EditorasController < ApplicationController
   # GET /editoras
   # GET /editoras.json
+
+  before_filter :authenticate_user!
+
   def index
     @editoras = Editora.all
 

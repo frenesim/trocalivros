@@ -1,13 +1,8 @@
-= form_for @disciplina do |f|
-  - if @disciplina.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@disciplina.errors.count, "error")} prohibited this disciplina from being saved:"
-      %ul
-        - @disciplina.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :disciplina
-    = f.text_field :nome
-  .actions
-    = f.submit 'Save'
+= form_for @disciplina, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :nome, :class => 'control-label'
+    .controls
+      = f.text_field :nome, :class => 'text_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), disciplinas_path, :class => 'btn'

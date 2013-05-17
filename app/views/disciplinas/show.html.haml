@@ -1,9 +1,13 @@
-%p#notice= notice
+- model_class = Disciplina
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
 
 %p
-  %b Disciplina:
+  %strong= model_class.human_attribute_name(:nome) + ':'
+  %br
   = @disciplina.nome
 
-= link_to 'Edit', edit_disciplina_path(@disciplina)
-\|
-= link_to 'Back', disciplinas_path
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), disciplinas_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_disciplina_path(@disciplina), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), disciplina_path(@disciplina), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
