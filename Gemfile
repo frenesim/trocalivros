@@ -16,9 +16,14 @@ group :development, :test do
   gem 'immigrant'
   gem "seed_dump", "~> 0.4.2"
   gem 'rspec-rails', '~> 2.0'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
   gem "minitest"
   gem "minitest-reporters", '>= 0.5.0'
   gem 'cucumber-rails', :require => false
