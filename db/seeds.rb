@@ -21,5 +21,7 @@ Editora.first_or_create([
 ], :without_protection => true )
 
 Livro.first_or_create([
-                 { :nome => "Palavras à Solta", :editora_id => 1, :ano_escolaridade => 5, :autore_id => 1, :preco => 10, :created_at => "2013-05-01 22:04:09", :updated_at => "2013-05-01 22:04:09", :disciplina_id => 1 , :user_id => 1 }
-             ], :without_protection => true )
+  { :nome => "Palavras à Solta", :editora_id => 1, :ano_escolaridade => 5, :autore_id => 1, :preco => 10, :created_at => "2013-05-01 22:04:09", :updated_at => "2013-05-24 09:10:32", :disciplina_id => 1, :user_id => 1, :photo1_file_name => "drawing.svg", :photo1_content_type => "image/svg+xml", :photo1_file_size => 4094, :photo1_updated_at => "2013-05-24 09:10:28" }
+], :without_protection => true )
+
+

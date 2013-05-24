@@ -20,3 +20,7 @@ pt:
   time:
     formats:
       default: "%d-%b-%Y - %H:%M:%S"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Este registo não é válido"
