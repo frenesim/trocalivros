@@ -1,9 +1,13 @@
 # encoding: UTF-8
 require 'spec_helper'
 
+
 describe Autore do
+
+  let(:valid_attributes) {FactoryGirl.create(:autore)}
+
   it "has a valid factory" do
-    FactoryGirl.create(:autore).should be_valid
+    valid_attributes.should be_valid
   end
 
   it "is invalid without a name" do
