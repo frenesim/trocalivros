@@ -12,7 +12,7 @@ describe Livro do
     l2 = FactoryGirl.create(:livro, nome: "a palavra que sobe")
     l3 = FactoryGirl.create(:livro, nome: "nem sobe nem desce")
 
-    Livro.search_simple("pal").should == [l1,l2]
-    Livro.search_simple("pal").should_not include l3
+    Livro.simple_search("pal").should == [l1,l2]
+    Livro.simple_search("pal").should_not include l3
   end
 end

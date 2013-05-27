@@ -1,17 +1,13 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
+require 'faker'
+
 FactoryGirl.define do
   factory :user do
-    email "MyString"
-    encrypted_password "MyString"
-    reset_password_token "MyString"
-    reset_password_sent_at "2013-05-23 12:58:48"
-    remember_created_at "2013-05-23 12:58:48"
+    email {Faker::Internet.email}
+    password "123123"
+    password_confirmation { "123123" }
     sign_in_count 1
-    current_sign_in_at "2013-05-23 12:58:48"
-    last_sign_in_at "2013-05-23 12:58:48"
-    current_sign_in_ip "MyString"
-    last_sign_in_ip "MyString"
-    phone_number "MyString"
+    phone_number {Faker::PhoneNumber.phone_number}
   end
 end

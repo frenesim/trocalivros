@@ -2,7 +2,7 @@ class AutoresController < ApplicationController
   # GET /autores
   # GET /autores.json
 
-  #before_filter :authenticate_user!
+  before_filter :authenticate_user!
 
   def index
     @autores = Autore.all

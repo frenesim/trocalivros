@@ -8,9 +8,9 @@ class Livro < ActiveRecord::Base
   belongs_to :editora
   belongs_to :user
 
-  scope :search, lambda { |search| where("nome LIKE ?", "%#{search}%")}
+  scope :sim_search, lambda { |search| where("nome LIKE ?", "%#{search}%")}
 
   def self.simple_search(search_text)
-    search_text ? where("nome LIKE ?", "%#{search_text}%") : where(1)
+    where("nome LIKE ?", "%#{search_text}%") if search_text
   end
 end
