@@ -50,8 +50,8 @@ describe AutoresController do
 
   describe "GET show" do
     it "assigns the requested autore as @autore" do
-      autore = Autore.create! valid_attributes
-      get :show, {:id => autore.to_param}, valid_session
+      autore = FactoryGirl.create(:autore)
+      get :show, {:id => autore.to_param}
       assigns(:autore).should eq(autore)
     end
   end
@@ -66,7 +66,7 @@ describe AutoresController do
   describe "GET edit" do
     it "assigns the requested autore as @autore" do
       autore = Autore.create! valid_attributes
-      get :edit, {:id => autore.to_param}, valid_session
+      get :edit, {:id => autore.to_param}
       assigns(:autore).should eq(autore)
     end
   end

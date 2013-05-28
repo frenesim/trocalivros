@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe "autores/edit" do
   before(:each) do
-    @autore = assign(:autore, stub_model(Autore,
-      :nome => "MyString"
-    ))
+    @autore = assign(:autores,[
+        FactoryGirl.create(:autore)
+    ])
   end
 
   it "renders the edit autore form" do
