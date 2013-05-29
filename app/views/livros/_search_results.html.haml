@@ -20,4 +20,4 @@
         %td= livro.autore.nome
         %td= livro.preco
         %td
-          = link_to t('.Contacto', :default => t("helpers.links.details")), edit_livro_path(livro), :class => 'btn btn-link'
+          = owner_link(livro)
