@@ -1,0 +1,7 @@
+pt:
+  helpers:
+    submit:
+      create: "Criar %{model}"
+      submit: "Gravar %{model}"
+      update: "Update %{model}"
+

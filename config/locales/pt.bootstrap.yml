@@ -5,6 +5,7 @@ pt:
   helpers:
     actions: "Ações"
     links:
+      create: "Criar"
       back: "Voltar"
       cancel: "Cancelar"
       confirm: "Confirma?"
