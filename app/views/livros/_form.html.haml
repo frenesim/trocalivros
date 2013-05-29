@@ -12,17 +12,19 @@
     .controls
       = collection_select :livro, :editora_id, Editora.all, "id", "nome", {:include_blank => true}
   .control-group
-    = f.label :ano_escolaridade, :class => 'control-label'
+    = f.label "Escolaridade", :class => 'control-label'
     .controls
-      = f.number_field :ano_escolaridade, :class => 'number_field'
+      = f.select :ano_escolaridade, options_for_select((5..12).map{|a| a.to_s+"º"}), {:include_blank => true},:class=>"span1"
+      Ano
   .control-group
-    = f.label :autore_id, :class => 'control-label'
+    = f.label "Autor", :class => 'control-label'
     .controls
       = collection_select :livro, :autore_id, Autore.all, "id", "nome", {:include_blank => true}
   .control-group
-    = f.label :preco, :class => 'control-label'
+    = f.label "Preço", :class => 'control-label'
     .controls
-      = f.number_field :preco, :class => 'number_field'
+      = f.number_field :preco, :class => 'number_field', :class=>"span1"
+      (€)
   .control-group
     = f.label :photos, :class => 'control-label'
     .controls
