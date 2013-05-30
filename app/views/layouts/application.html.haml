@@ -20,7 +20,7 @@
   %body
     #user-log
       -if user_signed_in?
-        Bem vindo #{link_to current_user.email, edit_user_registration_path}. Clique para
+        Bem vindo #{link_to current_user.name, edit_user_registration_path}. Clique para
         =link_to "Sair", destroy_user_session_path, :method => :delete
       -else
         #{link_to "Entre", new_user_session_path} ou #{link_to "Registe-se", new_user_registration_path}

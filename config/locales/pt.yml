@@ -4,4 +4,13 @@ pt:
       create: "Criar %{model}"
       submit: "Gravar %{model}"
       update: "Update %{model}"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            current_password:
+              blank: "não foi submetida."
+
+
 

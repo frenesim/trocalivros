@@ -6,6 +6,7 @@ pt:
     registrations:
       destroyed: "Até breve! A sua conta foi cancelada com sucesso. Esperamos por si novamente."
       signed_up: "Bem vindo! O seu registo foi bem sucedido."
+      updated: "A sua conta foi actualizada com sucesso."
     shared:
       forgot_password: "Esqueceu-se da palavra passe?"
     failure:
@@ -18,3 +19,13 @@ pt:
       timeout: "A sua sessão expirou, por favor volte a entrar."
       unauthenticated: "Necessita de estar autenticado para continuar."
       unconfirmed: "Tem que confirmar a sua conta antes de continuar."
+  errors:
+     messages:
+       already_confirmed: "Já está confirmado, por favor tente fazer entrar novamente."
+       confirmation_period_expired: "precisa de ser confirmado dentro de %{period}, por favor requisite uma nova password."
+       expired: "está exiparada, por favor requesite uma nova."
+       not_found: "não encontrada"
+       not_locked: "não foi blockeada"
+       not_saved:
+         one: "um erro não permitiu este %{resource} de ficar gravado:"
+         other: "%{count} erros não permitiram este %{resource} de ficar gravado:"
