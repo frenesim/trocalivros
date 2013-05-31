@@ -6,6 +6,7 @@ Trocalivros::Application.routes.draw do
     end
   end
 
+  devise_for :users, :controllers => { :registrations => "registrations" }
 
   resources :disciplinas
 

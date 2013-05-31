@@ -1,0 +1,14 @@
+pt:
+  activerecord:
+    attributes:
+      user:
+        name: "Nome"
+        address: "Endereço"
+        current_password: "A Palavra chave actual"
+        password: "Palavra chave"
+      current_password:
+        blank: "não foi submetida."
+    models:
+      user: "Utilizador"
+  activemodel:
+    user: "Utilizadores"
