@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     @user = User.find(current_user.id)
-    if @user.update_attributes(params[:user])
+    if resource.update_with_password(resource_params) || @user.update_attributes(params[:user])
       set_flash_message :notice, :updated
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true
@@ -15,5 +15,11 @@ class RegistrationsController < Devise::RegistrationsController
     else
       render "edit"
     end
+  end
+
+  protected
+
+  def after_update_path_for(resource)
+    edit_user_registration_path(resource)
   end
 end
