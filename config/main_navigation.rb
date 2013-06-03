@@ -10,7 +10,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.dom_id = 'top-nav'
     primary.dom_class = 'nav nav-tabs'
 
-    primary.item :livros, 'Quero', livros_path, :class => 'my_class'
+    primary.item :livros, 'Quero', livros_path
     primary.item :livros, 'Tenho', new_livro_path
 
 

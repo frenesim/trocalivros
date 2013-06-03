@@ -17,6 +17,10 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def change_password
+    @user = User.find(current_user.id)
+  end
+
   protected
 
   def after_update_path_for(resource)

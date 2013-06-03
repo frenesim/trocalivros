@@ -1,6 +1,8 @@
 Trocalivros::Application.routes.draw do
 
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users, :controllers => {:registrations => "registrations"} do
+    get "users/change_password", :to => "registrations#change_password", :as => "users/change_password"
+  end
 
   resources :disciplinas
 

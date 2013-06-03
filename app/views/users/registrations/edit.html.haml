@@ -1,12 +1,27 @@
 %h2
   Edit #{resource_name.to_s.humanize}
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-  = devise_error_messages!
-  =render :partial => "simple_edit", :locals => { :f => f } if params[:change_password].nil?
-  =render :partial => "change_password", :locals => { :f => f } unless params[:change_password].nil?
-  =link_to "Alterar a palavra chave", "#{edit_user_registration_path}?change_password=true"
-  %div= f.submit "Update"
-%h3 Cancel my account
-%p
-  Deseja encerrar a sua conta? #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
-= link_to "Back", :back
+.container-fluid
+  .row-fluid
+    = devise_error_messages!
+    .span2
+      = render_navigation :context => :user, :expand_all => true, :renderer => :bootstrap
+    .span10
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        .control-group
+          = f.label  "Nome:", :class => 'control-label'
+          .controls
+            = f.text_field :name, :class => 'text_field span4'
+        .control-group
+          = f.label  "Email:", :class => 'control-label'
+          .controls
+            = f.email_field :email, :class => 'text_field span4'
+        .control-group
+          = f.label  "Telefone:", :class => 'control-label'
+          .controls
+            = f.phone_field :phone_number, :class => 'text_field span4'
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Aguardamos confirmação para: #{resource.unconfirmed_email}
+        .form-actions
+          = f.submit "Update"
+          = link_to "Back", :back
