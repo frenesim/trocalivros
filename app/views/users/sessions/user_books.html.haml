@@ -1,0 +1,8 @@
+- model_class = User
+.h5 Os seus livros
+.container-fluid
+  .row-fluid
+    .span2
+      = render_navigation :context => :user, :expand_all => true, :renderer => :bootstrap
+    .span10
+      =render :partial => "livros/search_results", :locals => {:model_class => model_class}

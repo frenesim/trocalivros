@@ -1,4 +1,4 @@
-class RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
   def update
     # required for settings form to submit when password is left blank
     if params[:user][:password].blank?
@@ -18,7 +18,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def change_password
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
   protected

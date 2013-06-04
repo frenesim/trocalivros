@@ -13,4 +13,8 @@ class Livro < ActiveRecord::Base
   def self.simple_search(search_text)
     where("nome LIKE ?", "%#{search_text}%") if search_text
   end
+
+  def self.user_books(user_id)
+    where(:user_id => user_id)
+  end
 end

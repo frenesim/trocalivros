@@ -1,12 +1,11 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
+= render :partial => "users/shared/registrations_header"
 .container-fluid
   .row-fluid
-    = devise_error_messages!
     .span2
       = render_navigation :context => :user, :expand_all => true, :renderer => :bootstrap
     .span10
       = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        = devise_error_messages!
         .control-group
           = f.label  "Nome:", :class => 'control-label'
           .controls
@@ -19,9 +18,9 @@
           = f.label  "Telefone:", :class => 'control-label'
           .controls
             = f.phone_field :phone_number, :class => 'text_field span4'
-        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-          %div
-            Aguardamos confirmação para: #{resource.unconfirmed_email}
         .form-actions
           = f.submit "Update"
           = link_to "Back", :back
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %div
+          Aguardamos confirmação para: #{resource.unconfirmed_email}
