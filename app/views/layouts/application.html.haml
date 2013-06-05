@@ -23,7 +23,7 @@
         Bem vindo #{link_to username, edit_user_registration_path}. Clique para
         =link_to "Sair", destroy_user_session_path, :method => :delete
       -else
-        #{link_to "Entre", new_user_session_path} ou #{link_to "Registe-se", new_user_registration_path}
+        #{link_to "Entrar", new_user_session_path} ou #{link_to "Registe-se", new_user_registration_path}
     .row-fluid
     .navbar.navbar-fluid-top
       .navbar-inner
@@ -34,7 +34,7 @@
             %span.icon-bar
           %a.brand(href=root_path) Troca de Livros
           .container.nav-collapse
-            =render_navigation :expand_all => true, :renderer => :bootstrap
+            =render_navigation :context => :main, :expand_all => true, :renderer => :bootstrap
 
     .container-fluid
 

@@ -1,12 +1,9 @@
 Trocalivros::Application.routes.draw do
 
-  devise_for :users do
-    as :user do
-      match 'users/change_password' => 'devise/registrations#change_password'
-    end
+  devise_for :users, :controllers => {:registrations => "users/registrations"} do
+    get "users/change_password", :to => "users/registrations#change_password", :as => "user/change_password"
+    get "users/books", :to => "users/sessions#user_books", :as => "user/books"
   end
-
-  devise_for :users, :controllers => { :registrations => "registrations" }
 
   resources :disciplinas
 
@@ -17,7 +14,6 @@ Trocalivros::Application.routes.draw do
   resources :livros
 
   root :to => 'livros#index'
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
