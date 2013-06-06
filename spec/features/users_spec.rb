@@ -1,26 +1,27 @@
 require 'spec_helper'
+require 'faker'
 
-feature "go to livro page (root_path)" do
+feature "register user" do
 
-  scenario "sees the searchbox and no list below" do
+  scenario 'user registers without name and it appears a personalized welcome message with the email' do
     # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-    visit livros_path
-    page.should have_content("Procuro")
-    page.should have_no_content("Disciplinas")
+    visit new_user_registration_path
+    email = Faker::Internet.email
+    fill_in :user_email, with: email
+    fill_in :user_password, with: "password"
+    fill_in :user_password_confirmation, with: "password"
+    click_on "Registo"
+    page.should have_content(email)
     #get autores_path
     #response.status.should be(302)
   end
 
-  scenario "clicks on Icon and go to root_path" do
-    visit livros_path
-    click_link "Troca de Livros"
-    current_path.should eq(root_path)
+  scenario 'user registers with name and it appears a personalized welcome message with the name' do
+
   end
 
   scenario "unauthenticated user can see list of books" do
     visit livros_path
-    click_button "Ir"
-    page.should_not have_link("Editar")
   end
 
 end
