@@ -1,6 +1,10 @@
 Trocalivros::Application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   devise_for :users, :controllers => {:registrations => "users/registrations"}
+  ActiveAdmin.routes(self)
 
   devise_scope :user do
     get "user/change_password", :to => "users/registrations#change_password", :as => "user/change_password"
