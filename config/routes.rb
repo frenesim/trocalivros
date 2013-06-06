@@ -1,5 +1,7 @@
 Trocalivros::Application.routes.draw do
 
+  root :to => 'livros#index'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -18,8 +20,6 @@ Trocalivros::Application.routes.draw do
   resources :editoras
 
   resources :livros
-
-  root :to => 'livros#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
