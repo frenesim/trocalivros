@@ -6,17 +6,14 @@ Given /I am logged in/ do
   authenticate
 end
 
-Then /I should see my name/ do
-  page.should have_content(user.email)
+Then /I should see my email/ do
+  page.should have_content(user.name)
 end
 
-module Helpers
-  def authenticate
-    user = FactoryGirl.create(:user)
-    visit user_session
-    fill_in :user_email, with: user.email
-    fill_in :user_password, with: user.password
-    click_on "Entrar"
-  end
-
+def authenticate
+  user = FactoryGirl.create(:user)
+  visit user_session_path
+  fill_in :user_email, with: user.email
+  fill_in :user_password, with: user.password
+  click_button "Entrar"
 end
