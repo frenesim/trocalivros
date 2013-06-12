@@ -38,4 +38,6 @@ Trocalivros::Application.configure do
 
   # When I installed Devised it was suggested that I include this line. change the host in production
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  #config.paperclip_defaults = {:storage => :fog, :fog_credentials => {:provider => "Local", :local_root => "#{Rails.root}/public"}, :fog_directory => "", :fog_host => "localhost"}
 end
