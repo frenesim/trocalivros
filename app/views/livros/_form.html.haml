@@ -29,6 +29,12 @@
     = f.label :photos, :class => 'control-label'
     .controls
       = f.file_field :photo1, :class => 'photo_field'
+    .controls
+      = f.file_field :photo2, :class => 'photo_field'
+    .controls
+      = f.file_field :photo3, :class => 'photo_field'
+    .controls
+      = f.file_field :photo4, :class => 'photo_field'
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), livros_path, :class => 'btn'
