@@ -1,0 +1,11 @@
+
+.page-header
+  %h4=t '.title', :default => "Detalhes do vendedor do manual #{@livro.nome}"
+
+%p
+  %strong= 'Nome:'
+  %br
+  = @user.name
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), editoras_path, :class => 'btn'

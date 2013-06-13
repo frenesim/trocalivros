@@ -6,11 +6,11 @@ Trocalivros::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :users, :controllers => {:registrations => "users/registrations"}
-  ActiveAdmin.routes(self)
 
   devise_scope :user do
     get "user/change_password", :to => "users/registrations#change_password", :as => "user/change_password"
     get "user/books", :to => "users/sessions#user_books", :as => "user/books"
+
   end
 
   resources :disciplinas
@@ -19,7 +19,9 @@ Trocalivros::Application.routes.draw do
 
   resources :editoras
 
-  resources :livros
+  resources :livros do
+    resources :users
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

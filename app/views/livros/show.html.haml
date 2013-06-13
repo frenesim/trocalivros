@@ -2,35 +2,36 @@
 .page-header
   %h1=t '.title', :default => model_class.model_name.human
 
-%p
-  %strong= model_class.human_attribute_name(:nome) + ':'
-  %br
-  = @livro.nome
-%p
-  %strong= model_class.human_attribute_name(:editora_id) + ':'
-  %br
-  = @livro.editora_id
-%p
-  %strong= model_class.human_attribute_name(:ano_escolaridade) + ':'
-  %br
-  = @livro.ano_escolaridade
-%p
-  %strong= model_class.human_attribute_name(:autore_id) + ':'
-  %br
-  = @livro.autore_id
-%p
-  %strong= model_class.human_attribute_name(:preco) + ':'
-  %br
-  = @livro.preco
-%p
-  %strong= model_class.human_attribute_name(:photo1) + ':'
-  %br
-  = image_tag @livro.photo1.url
-  = image_tag @livro.photo2.url
-  = image_tag @livro.photo3.url
-  = image_tag @livro.photo4.url
-
+.row-fluid
+  .span4.offset1
+    %p
+      %strong= model_class.human_attribute_name(:nome) + ':'
+      %br
+        = @livro.nome
+    %p
+      %strong= model_class.human_attribute_name(:editora_id) + ':'
+      %br
+        = @livro.editora.nome
+    %p
+      %strong= model_class.human_attribute_name(:ano_escolaridade) + ':'
+      %br
+        = @livro.ano_escolaridade
+  .span4
+    %p
+      %strong= 'Autor:'
+      %br
+        = @livro.autore.nome
+    %p
+      %strong= 'Preço:'
+      %br
+        = @livro.preco
+    %p
+      %strong= 'Fotos:'
+      %br
+        = image_tag @livro.photo1.url(:thumb)
+        = image_tag @livro.photo2.url(:thumb)
+        = image_tag @livro.photo3.url(:thumb)
+        = image_tag @livro.photo4.url(:thumb)
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), livros_path, :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_livro_path(@livro), :class => 'btn'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), livro_path(@livro), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+  = link_to t('.contact', :default => t("helpers.links.contact")), livro_user_path(@livro), :class => 'btn'

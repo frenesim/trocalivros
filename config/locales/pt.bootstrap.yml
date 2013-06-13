@@ -13,6 +13,7 @@ pt:
       new: "Novo"
       edit: "Editar"
       details: "Detalhes"
+      contact: "Contactar vendedor"
     titles:
       edit: "Editar"
       save: "Gravar"
