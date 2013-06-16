@@ -1,0 +1,18 @@
+.control-group
+  = f.label :photos, :class => 'control-label'
+  .controls
+    = f.file_field :photo1, :class => 'photo_field'
+  .controls
+    = f.file_field :photo2, :class => 'photo_field'
+  .controls
+    .fileinputs
+      = f.file_field :photo3, :class => 'file'
+      .fakefile
+        %input
+        =image_tag "search.gif", size:"36x36"
+  .controls
+    .fileinputs
+      = f.file_field :photo4, :class => 'file'
+      .fakefile
+        %input
+        =image_tag "search.gif", size:"36x36"

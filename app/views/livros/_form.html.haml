@@ -14,7 +14,7 @@
   .control-group
     = f.label "Escolaridade", :class => 'control-label'
     .controls
-      = f.select :ano_escolaridade, options_for_select((5..12).map{|a| a.to_s+"º"}), {:include_blank => true},:class=>"span1"
+      = f.select :ano_escolaridade, options_for_select((5..12).map{|a| a.to_s+"º"},@livro.ano_escolaridade.to_s+"º"), {:include_blank => true},:class=>"span1"
       Ano
   .control-group
     = f.label "Autor", :class => 'control-label'
@@ -25,16 +25,10 @@
     .controls
       = f.number_field :preco, :class => 'number_field', :class=>"span1"
       (€)
-  .control-group
-    = f.label :photos, :class => 'control-label'
-    .controls
-      = f.file_field :photo1, :class => 'photo_field'
-    .controls
-      = f.file_field :photo2, :class => 'photo_field'
-    .controls
-      = f.file_field :photo3, :class => 'photo_field'
-    .controls
-      = f.file_field :photo4, :class => 'photo_field'
+  -if @livro.id.nil?
+    =render :partial => "new_photos_form", :locals => { :f => f }
+  -else
+    =render :partial => "edit_photos_form", :locals => { :f => f }
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), livros_path, :class => 'btn'

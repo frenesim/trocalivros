@@ -1,0 +1,26 @@
+.control-group
+  = f.label :photos, :class => 'control-label'
+  .controls
+    = image_tag @livro.photo1.url :thumb
+    .fileinputs.span1
+      = f.file_field :photo1, :class => 'file'
+      .fakefile
+        =image_tag "search.gif", size:"36x36"
+  .controls
+    = image_tag @livro.photo2.url :thumb
+    .fileinputs.span1
+      = f.file_field :photo2, :class => 'file'
+      .fakefile
+        =image_tag "search.gif", size:"36x36"
+  .controls
+    = image_tag @livro.photo3.url :thumb
+    .fileinputs.span1
+      = f.file_field :photo3, :class => 'file'
+      .fakefile
+        =image_tag "search.gif", size:"36x36"
+  .controls
+    = image_tag @livro.photo4.url :thumb
+    .fileinputs.span1
+      = f.file_field :photo4, :class => 'file'
+      .fakefile
+        =image_tag "search.gif", size:"36x36"
