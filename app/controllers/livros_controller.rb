@@ -16,8 +16,8 @@ class LivrosController < ApplicationController
   # GET /livros/1
   # GET /livros/1.json
   def show
+    session[:return_to] = request.referer
     @livro = Livro.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @livro }

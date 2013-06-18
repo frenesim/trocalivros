@@ -1,38 +1,38 @@
 - model_class = Livro
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human
-
+.row-fluid
+  .well.span6.offset1
+    %h2=@livro.nome
+    %h4=@livro.disciplina.nome
 .row-fluid
   .span3.offset1.well.well-large
     %p
-      %strong= model_class.human_attribute_name(:nome) + ':'
-      .well.well-small
-        = @livro.nome
-    %p
       %strong= model_class.human_attribute_name(:editora_id) + ':'
-      .well.well-small
-        = @livro.editora.nome
+      %br
+        .offset1= @livro.editora.nome
     %p
       %strong= model_class.human_attribute_name(:ano_escolaridade) + ':'
-      .well.well-small
-        = "#{@livro.ano_escolaridade}º ano"
+      %br
+        .offset1= "#{@livro.ano_escolaridade}º ano"
   .span3.well.well-large
     %p
       %strong Autor:
-      .well.well-small
-        = @livro.autore.nome
+      %br
+        .offset1= @livro.autore.nome
     %p
-      %strong 'Preço em Euros:'
-      .well.well-small
-        = "#{@livro.preco} €"
+      %strong Preço em Euros:
+      %br
+        .offset1="#{@livro.preco} €"
   .span3
     .well
       %strong= 'Fotos:'
-      .row-fluid
-        = image_tag @livro.photo1.url(:thumb)
-        = image_tag @livro.photo2.url(:thumb)
-        = image_tag @livro.photo3.url(:thumb)
-        = image_tag @livro.photo4.url(:thumb)
+      .row-fluid.offset1
+        -if @livro.photo1.file? || @livro.photo2.file? || @livro.photo3.file? || @livro.photo4.file?
+          =image_tag @livro.photo1.url(:thumb) if @livro.photo1.file?
+          =image_tag @livro.photo2.url(:thumb) if @livro.photo2.file?
+          =image_tag @livro.photo3.url(:thumb) if @livro.photo3.file?
+          =image_tag @livro.photo4.url(:thumb) if @livro.photo4.file?
+        -else
+          Imagens não disponíveis
 .form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), livros_path, :class => 'btn'
+  = link_to t('.back', :default => t("helpers.links.back")), redirect_back, :class => 'btn'
   = link_to t('.contact', :default => t("helpers.links.contact")), livro_user_path(@livro), :class => 'btn'
