@@ -3,31 +3,32 @@
   %h1=t '.title', :default => model_class.model_name.human
 
 .row-fluid
-  .span4.offset1
+  .span3.offset1.well.well-large
     %p
       %strong= model_class.human_attribute_name(:nome) + ':'
-      %br
+      .well.well-small
         = @livro.nome
     %p
       %strong= model_class.human_attribute_name(:editora_id) + ':'
-      %br
+      .well.well-small
         = @livro.editora.nome
     %p
       %strong= model_class.human_attribute_name(:ano_escolaridade) + ':'
-      %br
-        = @livro.ano_escolaridade
-  .span4
+      .well.well-small
+        = "#{@livro.ano_escolaridade}º ano"
+  .span3.well.well-large
     %p
-      %strong= 'Autor:'
-      %br
+      %strong Autor:
+      .well.well-small
         = @livro.autore.nome
     %p
-      %strong= 'Preço:'
-      %br
-        = @livro.preco
-    %p
+      %strong 'Preço em Euros:'
+      .well.well-small
+        = "#{@livro.preco} €"
+  .span3
+    .well
       %strong= 'Fotos:'
-      %br
+      .row-fluid
         = image_tag @livro.photo1.url(:thumb)
         = image_tag @livro.photo2.url(:thumb)
         = image_tag @livro.photo3.url(:thumb)

@@ -1,23 +1,22 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:photo1)
+      %th
       %th= model_class.human_attribute_name(:disciplina_id)
       %th= model_class.human_attribute_name(:nome)
       %th= model_class.human_attribute_name(:ano_escolaridade)
       %th= model_class.human_attribute_name(:editora_id)
-      %th= model_class.human_attribute_name("Autor")
-      %th= model_class.human_attribute_name("Preço")
+      %th Autor
+      %th Preço (Euros)
       %th
   %tbody
     - @livros.each do |livro|
-      %tr
+      %tr.link{:data => {:link=>livro_path(livro)}}
         %td= image_tag livro.photo1.url :thumb
         %td= link_to livro.disciplina.nome, livro_path(livro)
         %td= livro.nome
-        %td= livro.ano_escolaridade
+        %td= "#{livro.ano_escolaridade}º ano"
         %td= livro.editora.nome
         %td= livro.autore.nome
         %td= livro.preco
-        %td
-          = owner_link(livro)
+        %td= owner_link(livro)

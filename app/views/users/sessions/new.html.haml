@@ -1,5 +1,5 @@
 .row-fluid
-  .span3.offset1
+  .span4.offset1.well.well-large
     %h3 Autenticação
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
       .control-group
@@ -17,9 +17,9 @@
             = f.label "recordar-me", :class => 'checkbox inline'
         %br/
         = f.submit "Entrar", :class=>"btn btn-large btn-block"
-  .span4.offset2
-    %h2 Registo
-    %p.lead Se ainda não está registado e pretende vender, comprar ou trocar Manuais Escolares registe-se agora. Demora apenas uns segundos!
+  .span4.offset1.well.well-large
+    %h3 Registo
+    %p.lead Se ainda não está registado e pretende vender, comprar ou trocar Manuais Escolares registe-se agora no Gira Livros. Demora apenas uns segundos!
     =render "users/registrations/register_button"
 .row-fluid
   .span3.offset1
