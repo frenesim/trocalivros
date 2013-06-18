@@ -5,16 +5,8 @@ require 'faker'
 FactoryGirl.define do
   factory :livro do
     nome {Faker::Name.name}
-    editora_id 1
-    ano_escolaridade 5
-    autore_id 1
-    preco 10
-    disciplina_id 1
-    user_id 1
-    photo1_file_name "drawing.svg"
-    photo1_content_type "image/svg+xml"
-    photo1_file_size 4094
-    photo1_updated_at "2013-05-24 10:05:19"
+    ano_escolaridade (5..12).to_a.sample
+    preco (5..30).to_a.sample
     association :autore
     association :disciplina
     association :user

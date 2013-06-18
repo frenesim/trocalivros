@@ -4,6 +4,6 @@ require "faker"
 
 FactoryGirl.define do
   factory :editora do
-    nome {Faker::Name.name}
+    nome {Faker::Name.first_name}
   end
 end

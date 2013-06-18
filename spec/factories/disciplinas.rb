@@ -4,6 +4,6 @@ require 'faker'
 
 FactoryGirl.define do
   factory :disciplina do
-    nome {Faker::Name.name}
+    nome {Faker::Name.last_name}
   end
 end
