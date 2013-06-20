@@ -7,8 +7,18 @@ User.first_or_create([
                          { :email => "clau@gmail.com", :password => "1234", :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 4, :current_sign_in_at => "2013-06-10 18:51:56", :last_sign_in_at => "2013-06-04 14:49:48", :current_sign_in_ip => "127.0.0.1", :last_sign_in_ip => "127.0.0.1", :created_at => "2013-06-04 14:00:58", :updated_at => "2013-06-10 18:51:56", :phone_number => "", :name => "Clau" }
                      ], :without_protection => true )
 
+
+
 10.times do
-  FactoryGirl.create(:livro)
+  FactoryGirl.create(:autore)
+end
+
+10.times do
+  FactoryGirl.create(:disciplina)
+end
+
+10.times do
+  FactoryGirl.create(:editora)
 end
 
 Livro.first_or_create([
@@ -24,4 +34,6 @@ Livro.first_or_create([
     {:nome => Faker::Name.first_name, :ano_escolaridade => (5..12).to_a.sample, :preco => (5..30).to_a.sample, :autore_id => (1..10).to_a.sample, :disciplina_id => (1..10).to_a.sample, :user_id => (1..3).to_a.sample, :editora_id => (1..10).to_a.sample}
                       ], :without_protection => true )
 
-
+10.times do
+  FactoryGirl.create(:livro)
+end
