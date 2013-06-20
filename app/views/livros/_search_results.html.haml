@@ -11,7 +11,7 @@
       %th
   %tbody
     - @livros.each do |livro|
-      %tr.link{:data => {:link=>livro_path(livro)}}
+      -class_chooser(controller.action_name)
         %td= image_tag livro.photo1.url :thumb
         %td= link_to livro.disciplina.nome, livro_path(livro)
         %td= livro.nome
