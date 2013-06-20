@@ -5,15 +5,15 @@
 %p
   %strong= 'Nome:'
   %br
-  = @user.name
+  = @livro.user.name
 %p
   %strong= 'Email:'
   %br
-  = @user.email
+  = @livro.user.email
 %p
   %strong= 'Telefone:'
   %br
-  = @user.phone_number
+  = @livro.user.phone_number
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), livros_path, :class => 'btn'
