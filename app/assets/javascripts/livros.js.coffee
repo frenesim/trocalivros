@@ -1,7 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
+  # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$("tr[data-link]").click ->
-  window.location = @dataset.link
+if window.location.pathname != "/user/books"
+  $("tr[data-link]").click ->
+    window.location = @dataset.link
 

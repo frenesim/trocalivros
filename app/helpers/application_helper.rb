@@ -6,9 +6,4 @@ module ApplicationHelper
       current_user.name
     end
   end
-
-  def tr_class_chooser(action)
-    action == 'user_books' ? '%tr' : "%tr.link{:data => {:link=>livro_path(livro)}}"
-  end
-
 end
