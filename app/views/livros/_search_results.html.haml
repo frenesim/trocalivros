@@ -1,4 +1,4 @@
-%table.table.table-striped
+%table.table.table-striped.table-bordered
   %thead
     %tr
       %th
@@ -12,7 +12,7 @@
   %tbody
     - @livros.each do |livro|
       %tr.link{:data => {:link=>livro_path(livro)}}
-        %td= image_tag livro.photo1.url :thumb
+        %td= main_photo_thumb(livro)
         %td= link_to livro.disciplina.nome, livro_path(livro)
         %td= livro.nome
         %td= "#{livro.ano_escolaridade}º ano"

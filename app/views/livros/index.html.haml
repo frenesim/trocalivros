@@ -1,6 +1,6 @@
 - model_class = Livro
 .page-header
-  %h1=t '.title', :default => "Manuais Escolares"
+  %h2.well=t '.title', :default => "Manuais Escolares"
   =render :partial => "simple_search_form"
 
   =render :partial => "search_results", :locals => { :model_class => model_class } unless params[:simple_search].nil?
