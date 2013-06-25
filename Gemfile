@@ -7,7 +7,6 @@ gem 'rails', '3.2.13'
 
 
 group :development, :test do
-  gem 'mysql2'
   gem 'foreigner'
   gem 'database_cleaner'
   gem 'capybara'
@@ -43,7 +42,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '~> 1.0.3'
 end
-
+gem 'mysql2'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
