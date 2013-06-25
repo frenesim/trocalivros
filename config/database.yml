@@ -27,14 +27,15 @@ test: &test
   host: localhost
 
 production:
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   reconnect: false
-  database: trocalivros_production
+  database: d412gn7qsnkdrp
   pool: 5
-  username: root
-  password: r00t
-  host: localhost
+  username: oyeyuwmkozymam
+  password: TR2OW_G6meSxsOfN3sgpi9C6ap
+  host: ec2-54-217-213-236.eu-west-1.compute.amazonaws.com
+  port: 5432
 
 cucumber:
   <<: *test
