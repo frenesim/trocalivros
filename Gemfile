@@ -25,9 +25,7 @@ group :test do
   gem 'guard-rspec'
   gem 'launchy'
   gem "minitest"
-  gem "minitest-reporters", '>= 0.5.0'
   gem 'cucumber-rails', :require => false
-  gem 'cucumber-rails-training-wheels'
   gem 'mocha', :require => false
 end
 
