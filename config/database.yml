@@ -34,8 +34,7 @@ production:
   pool: 5
   username: oyeyuwmkozymam
   password: TR2OW_G6meSxsOfN3sgpi9C6ap
-  host: ec2-54-217-213-236.eu-west-1.compute.amazonaws.com
-  port: 5432
+
 
 cucumber:
   <<: *test
