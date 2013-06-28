@@ -14,7 +14,7 @@ module LivrosHelper
       return image_tag livro.photo3.url :thumb if livro.photo3.file?
       return image_tag livro.photo4.url :thumb if livro.photo4.file?
     else
-      'Imagem não disponível'
+      'Imagem não disponívelx'
     end
   end
 
