@@ -10,7 +10,6 @@ gem 'rails', '3.2.13'
 
 group :development, :test do
   gem 'mysql2'
-  gem 'foreigner'
   gem 'database_cleaner'
   gem 'capybara'
   gem 'launchy'
@@ -44,7 +43,7 @@ group :assets do
   gem 'uglifier', '~> 1.0.3'
 end
 
-
+gem 'foreigner'
 gem 'pg'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -58,6 +57,7 @@ gem 'devise'
 
 gem 'simple-navigation-bootstrap'
 gem "paperclip", "~> 3.0"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
