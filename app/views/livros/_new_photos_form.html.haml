@@ -1,7 +1,7 @@
 .control-group
   = f.label :photos, :class => 'control-label'
   .controls
-    = f.file_field :photo1, :class => 'photo_field'
+    = f.input :photo1, :as => :rich_picker
   .controls
     = f.file_field :photo2, :class => 'photo_field'
   .controls
