@@ -21,6 +21,7 @@ footer {padding-top: 30px;}
 @import "bootswatch/readable/bootswatch";
 
 // Whatever application styles you have go last
+@import 'jquery.fileupload-ui';
 @import 'input_file';
 @import 'livros';
 @import 'users';

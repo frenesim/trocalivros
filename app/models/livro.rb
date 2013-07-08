@@ -18,4 +18,15 @@ class Livro < ActiveRecord::Base
   def self.user_books(user_id)
     where(:user_id => user_id)
   end
+
+  def to_jq_upload
+    {
+        "name" => read_attribute(:photo1),
+        "size" => photo1.size,
+        "url" => photo1.url,
+        "thumbnail_url" => photo1.thumb.url,
+        "delete_url" => picture_path(:id => id),
+        "delete_type" => "DELETE"
+    }
+  end
 end
