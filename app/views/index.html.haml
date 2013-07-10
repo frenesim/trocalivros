@@ -1,37 +1,44 @@
-= form_for @livro, :html => { :class => 'form-horizontal', :id => "fileupload" } do |f|
-  .control-group
-    = f.label :nome, :class => 'control-label'
-    .controls
-      = f.text_field :nome, :class => 'text_field'
-  .control-group
-    = f.label :disciplina_id, :class => 'control-label'
-    .controls
-      = collection_select :livro, :disciplina_id, Disciplina.all, "id", "nome", {:include_blank => true}
-  .control-group
-    = f.label :editora_id, :class => 'control-label'
-    .controls
-      = collection_select :livro, :editora_id, Editora.all, "id", "nome", {:include_blank => true}
-  .control-group
-    = f.label "Escolaridade", :class => 'control-label'
-    .controls
-      = f.select :ano_escolaridade, options_for_select((5..12).map{|a| a.to_s+"º"},@livro.ano_escolaridade.to_s+"º"), {:include_blank => true},:class=>"span1"
-      Ano
-  .control-group
-    = f.label "Autor", :class => 'control-label'
-    .controls
-      = collection_select :livro, :autore_id, Autore.all, "id", "nome", {:include_blank => true}
-  .control-group
-    = f.label "Preço", :class => 'control-label'
-    .controls
-      = f.number_field :preco, :class => 'number_field', :class=>"span1"
-      (€)
-  -if @livro.id.nil?
-    =render :partial => "new_photos_form", :locals => { :f => f }
-  -else
-    =render :partial => "edit_photos_form", :locals => { :f => f }
-  .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), livros_path, :class => 'btn'
+.container
+  %h2 Upload file
+  = form_for Upload.new, :html => { :multipart => true, :id => "fileupload"  } do |f|
+    / The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload
+    .row.fileupload-buttonbar
+      .span7
+        / The fileinput-button span is used to style the file input field as button
+        %span.btn.btn-success.fileinput-button
+          %i.icon-plus.icon-white
+          %span Add files...
+          = f.file_field :upload
+        %button.btn.btn-primary.start{:type => "submit"}
+          %i.icon-upload.icon-white
+          %span Start upload
+        %button.btn.btn-warning.cancel{:type => "reset"}
+          %i.icon-ban-circle.icon-white
+          %span Cancel upload
+        %button.btn.btn-danger.delete{:type => "button"}
+          %i.icon-trash.icon-white
+          %span Delete
+        %input.toggle{:type => "checkbox"}/
+      .span5
+        / The global progress bar
+        .progress.progress-success.progress-striped.active.fade
+          .bar{:style => "width:0%;"}
+    / The loading indicator is shown during image processing
+    .fileupload-loading
+    %br/
+    / The table listing the files available for upload/download
+    %table.table.table-striped
+      %tbody.files{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
+
+:javascript
+  var fileUploadErrors = {
+  maxFileSize: 'File is too big',
+  minFileSize: 'File is too small',
+  acceptFileTypes: 'Filetype not allowed',
+  maxNumberOfFiles: 'Max number of files exceeded',
+  uploadedBytes: 'Uploaded bytes exceed file size',
+  emptyResult: 'Empty file upload result'
+  };
 
 / The template to display files available for upload
 %script{:id => 'template-upload', :type => "text/x-tmpl"}
@@ -92,5 +99,24 @@
   </td>
   </tr>
   {% } %}
-
-
+:javascript
+  $(function () {
+  \// Initialize the jQuery File Upload widget:
+  $('#fileupload').fileupload();
+  \//
+  \// Load existing files:
+  $.getJSON($('#fileupload').prop('action'), function (files) {
+  var fu = $('#fileupload').data('blueimpFileupload'),
+  template;
+  fu._adjustMaxNumberOfFiles(-files.length);
+  console.log(files);
+  template = fu._renderDownload(files)
+  \.appendTo($('#fileupload .files'));
+  \// Force reflow:
+  fu._reflow = fu._transition && template.length &&
+  template[0].offsetWidth;
+  template.addClass('in');
+  $('#loading').remove();
+  });
+  
+  });

@@ -8,8 +8,7 @@ class LivrosController < ApplicationController
     @livros = Livro.simple_search params[:simple_search]
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @livros }
+      format.html
     end
   end
 
@@ -28,7 +27,6 @@ class LivrosController < ApplicationController
   # GET /livros/new.json
   def new
     @livro = Livro.new
-
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,8 +47,13 @@ class LivrosController < ApplicationController
 
     respond_to do |format|
       if @livro.save
-        format.html { redirect_to @livro, notice: 'Livro was successfully created.' }
-        format.json { render json: @livro, status: :created, location: @livro }
+        #format.html { redirect_to @livro, notice: 'Livro was successfully created.' }
+        format.html {
+          render :json => [@livro.to_jq_upload].to_json,
+                 :content_type => 'text/html',
+                 :layout => false
+        }
+        format.json { render json: {files: [@livro.to_jq_upload]}, status: :created, location: @livro }
       else
         format.html { render action: "new" }
         format.json { render json: @livro.errors, status: :unprocessable_entity }
