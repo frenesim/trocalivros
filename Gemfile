@@ -15,9 +15,10 @@ group :development, :test do
   gem 'launchy'
   gem 'nifty-generators'
   gem 'immigrant'
-  gem 'seed_dump', '~> 0.4.2'
+  gem "seed_dump", "~> 0.4.2"
   gem 'rspec-rails', '~> 2.0'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'erb2haml'
 end
 
 group :test do
@@ -36,9 +37,9 @@ group :assets do
   gem 'sass-rails'
   gem 'bootstrap-sass'
   gem 'bootswatch-rails'
-  gem 'therubyracer'
-  gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-  gem 'twitter-bootstrap-rails'
+  gem "therubyracer"
+  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+  gem "twitter-bootstrap-rails"
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '~> 1.0.3'
 end
@@ -48,8 +49,10 @@ group :production do
 end
 
 gem 'foreigner'
+gem 'pg'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem "jquery-fileupload-rails"
 
 gem "cancan"
 
@@ -59,8 +62,7 @@ gem 'activeadmin'
 gem 'devise'
 
 gem 'simple-navigation-bootstrap'
-gem 'paperclip', '~> 3.0'
-gem 'rich'
+gem "paperclip", "~> 3.0"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -74,3 +76,5 @@ gem 'rich'
 # Deploy with Capistrano
 # gem 'capistrano'
 
+# To use debugger
+# gem 'debugger'

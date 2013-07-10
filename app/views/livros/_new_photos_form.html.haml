@@ -1,18 +1,25 @@
-.control-group
-  = f.label :photos, :class => 'control-label'
-  .controls
-    = f.input :photo1, :as => :rich_picker
-  .controls
-    = f.file_field :photo2, :class => 'photo_field'
-  .controls
-    .fileinputs
-      = f.file_field :photo3, :class => 'file'
-      .fakefile
-        %input
-        =image_tag "search.gif", size:"36x36"
-  .controls
-    .fileinputs
-      = f.file_field :photo4, :class => 'file'
-      .fakefile
-        %input
-        =image_tag "search.gif", size:"36x36"
+.row.fileupload-buttonbar
+  .control-group
+    = f.label :photos, :class => 'control-label'
+    .controls
+      %span.btn.btn-success.fileinput-button
+        %i.icon-plus.icon-white
+        %span Adicionar Foto
+        = f.file_field :photo1, :class => 'photo_field'
+    .controls
+      %span.btn.btn-success.fileinput-button
+        %i.icon-plus.icon-white
+        %span Adicionar Foto
+        = f.file_field :photo2, :class => 'photo_field'
+    .controls
+      %span.btn.btn-success.fileinput-button
+        %i.icon-plus.icon-white
+        %span Adicionar Foto
+        = f.file_field :photo3, :class => 'photo_field'
+    .controls
+      %span.btn.btn-success.fileinput-button
+        %i.icon-plus.icon-white
+        %span Adicionar Foto
+        = f.file_field :photo4, :class => 'photo_field'
+    %table.table.table-striped
+      %tbody.files{:data => {:toggle=>"modal-gallery", :target=>"#modal-gallery"}}
