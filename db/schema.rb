@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710193742) do
+ActiveRecord::Schema.define(:version => 20130718162429) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(:version => 20130710193742) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "book_photos", :force => true do |t|
+  create_table "photos", :force => true do |t|
     t.integer  "livro_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -94,6 +94,13 @@ ActiveRecord::Schema.define(:version => 20130710193742) do
   add_index "livros", ["disciplina_id"], :name => "livros_disciplina_id_fk"
   add_index "livros", ["editora_id"], :name => "livros_editora_id_fk"
   add_index "livros", ["user_id"], :name => "livros_user_id_fk"
+
+  create_table "reviews", :force => true do |t|
+    t.string   "revie"
+    t.integer  "livro_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
