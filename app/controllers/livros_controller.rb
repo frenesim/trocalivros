@@ -46,16 +46,17 @@ class LivrosController < ApplicationController
   def create
     @livro = Livro.new(params[:livro])
     @livro.user_id = current_user.id
+    @photo = Photo.new(params[:livro][:photos_attributes][0])
 
     respond_to do |format|
       if @livro.save
         #format.html { redirect_to @livro, notice: 'Livro was successfully created.' }
         format.html {
-          render :json => [photo.to_jq_upload].to_json,
+          render :json => [@photo.to_jq_upload].to_json,
                  :content_type => 'text/html',
                  :layout => false
         }
-        format.json { render json: {files: [photo.to_jq_upload]}, status: :created, location: @livro }
+        format.json { render json: {files: [@photo.to_jq_upload]}, status: :created, location: @livro }
       else
         format.html { render action: "new" }
         format.json { render json: @livro.errors, status: :unprocessable_entity }
