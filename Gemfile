@@ -49,7 +49,6 @@ group :production do
 end
 
 gem 'foreigner'
-gem 'pg'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem "jquery-fileupload-rails"
