@@ -26,12 +26,6 @@
     .well
       %strong= 'Fotos:'
       .row-fluid.offset1
-        -if @livro.photo1.file? || @livro.photo2.file? || @livro.photo3.file? || @livro.photo4.file?
-          =image_tag @livro.photo1.url(:thumb) if @livro.photo1.file?
-          =image_tag @livro.photo2.url(:thumb) if @livro.photo2.file?
-          =image_tag @livro.photo3.url(:thumb) if @livro.photo3.file?
-          =image_tag @livro.photo4.url(:thumb) if @livro.photo4.file?
-        -else
           Imagens não disponíveis
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), redirect_back, :class => 'btn'

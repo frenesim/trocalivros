@@ -1,11 +1,4 @@
-.row.fileupload-buttonbar
-  .control-group
-    = f.label :photos, :class => 'control-label'
-    .controls
-      %span.btn.btn-success.fileinput-button
-        %i.icon-plus.icon-white
-        %span Adicionar Foto
-        = f.fields_for :photos do |photo|
-          = photo.file_field :photo, :class => 'photo_field'
-    %table.table.table-striped
-      %tbody.files{:data => {:toggle=>"modal-gallery", :target=>"#modal-gallery"}}
+.control-group
+  = f.label :photos, :class => 'control-label'
+  .controls
+    new photos

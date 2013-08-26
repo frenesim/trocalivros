@@ -1,15 +1,12 @@
 class Livro < ActiveRecord::Base
-  attr_accessible :ano_escolaridade, :autore_id, :editora_id, :nome, :preco, :disciplina_id, :user_id, :reviews_attributes, :photos_attributes
+  attr_accessible :ano_escolaridade, :autore_id, :editora_id, :nome, :preco, :disciplina_id, :user_id, :asset
+
+  has_attached_file :asset, :styles => { :medium => "300x300>", :thumb => "50x100>" }, :default_url => "/images/:style/missing.png"
 
   belongs_to :autore
   belongs_to :disciplina
   belongs_to :editora
   belongs_to :user
-  has_many :photos
-  has_many :reviews
-
-  accepts_nested_attributes_for :photos, :allow_destroy => true
-  accepts_nested_attributes_for :reviews
 
   def self.simple_search(search_text)
     where("nome LIKE ?", "%#{search_text}%") if search_text
@@ -18,6 +15,4 @@ class Livro < ActiveRecord::Base
   def self.user_books(user_id)
     where(:user_id => user_id)
   end
-
-
 end
