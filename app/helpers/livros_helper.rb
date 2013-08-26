@@ -9,16 +9,13 @@ module LivrosHelper
 
   def main_photo_thumb(livro)
     if photos_thumbs(livro)
-      return image_tag livro.photo1.url :thumb if livro.photo1.file?
-      return image_tag livro.photo2.url :thumb if livro.photo2.file?
-      return image_tag livro.photo3.url :thumb if livro.photo3.file?
-      return image_tag livro.photo4.url :thumb if livro.photo4.file?
+      return image_tag BookPhoto.find_last_by_livro_id(livro), :thumb if livro.photo1.file?
     else
-      'Imagem não disponívelx'
+      'Imagem indisponível'
     end
   end
 
   def photos_thumbs(livro)
-    livro.photo1.file? || livro.photo2.file? || livro.photo3.file? || livro.photo4.file?
+    livro.photo1.file?
   end
 end

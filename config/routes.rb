@@ -1,7 +1,5 @@
 Trocalivros::Application.routes.draw do
 
-  mount Rich::Engine => '/rich', :as => 'rich'
-
   root :to => 'livros#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -23,6 +21,7 @@ Trocalivros::Application.routes.draw do
 
   resources :livros do
     resources :users
+    resources :photos
   end
 
   # The priority is based upon order of creation:

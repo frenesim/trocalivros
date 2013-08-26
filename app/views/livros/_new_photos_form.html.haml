@@ -5,21 +5,7 @@
       %span.btn.btn-success.fileinput-button
         %i.icon-plus.icon-white
         %span Adicionar Foto
-        = f.file_field :photo1, :class => 'photo_field'
-    .controls
-      %span.btn.btn-success.fileinput-button
-        %i.icon-plus.icon-white
-        %span Adicionar Foto
-        = f.file_field :photo2, :class => 'photo_field'
-    .controls
-      %span.btn.btn-success.fileinput-button
-        %i.icon-plus.icon-white
-        %span Adicionar Foto
-        = f.file_field :photo3, :class => 'photo_field'
-    .controls
-      %span.btn.btn-success.fileinput-button
-        %i.icon-plus.icon-white
-        %span Adicionar Foto
-        = f.file_field :photo4, :class => 'photo_field'
+        = f.fields_for :photos do |photo|
+          = photo.file_field :photo, :class => 'photo_field'
     %table.table.table-striped
       %tbody.files{:data => {:toggle=>"modal-gallery", :target=>"#modal-gallery"}}

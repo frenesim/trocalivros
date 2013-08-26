@@ -27,6 +27,8 @@ class LivrosController < ApplicationController
   # GET /livros/new.json
   def new
     @livro = Livro.new
+    review = @livro.reviews.build
+    photo = @livro.photos.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,11 +51,11 @@ class LivrosController < ApplicationController
       if @livro.save
         #format.html { redirect_to @livro, notice: 'Livro was successfully created.' }
         format.html {
-          render :json => [@livro.to_jq_upload].to_json,
+          render :json => [photo.to_jq_upload].to_json,
                  :content_type => 'text/html',
                  :layout => false
         }
-        format.json { render json: {files: [@livro.to_jq_upload]}, status: :created, location: @livro }
+        format.json { render json: {files: [photo.to_jq_upload]}, status: :created, location: @livro }
       else
         format.html { render action: "new" }
         format.json { render json: @livro.errors, status: :unprocessable_entity }

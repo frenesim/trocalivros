@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130704144337) do
+ActiveRecord::Schema.define(:version => 20130718162429) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(:version => 20130704144337) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "photos", :force => true do |t|
+    t.integer  "livro_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
   create_table "disciplinas", :force => true do |t|
     t.string   "nome"
     t.datetime "created_at", :null => false
@@ -78,18 +88,6 @@ ActiveRecord::Schema.define(:version => 20130704144337) do
     t.string   "photo1_content_type"
     t.integer  "photo1_file_size"
     t.datetime "photo1_updated_at"
-    t.string   "photo2_file_name"
-    t.string   "photo2_content_type"
-    t.integer  "photo2_file_size"
-    t.datetime "photo2_updated_at"
-    t.string   "photo3_file_name"
-    t.string   "photo3_content_type"
-    t.integer  "photo3_file_size"
-    t.datetime "photo3_updated_at"
-    t.string   "photo4_file_name"
-    t.string   "photo4_content_type"
-    t.integer  "photo4_file_size"
-    t.datetime "photo4_updated_at"
   end
 
   add_index "livros", ["autore_id"], :name => "livros_autore_id_fk"
@@ -97,17 +95,11 @@ ActiveRecord::Schema.define(:version => 20130704144337) do
   add_index "livros", ["editora_id"], :name => "livros_editora_id_fk"
   add_index "livros", ["user_id"], :name => "livros_user_id_fk"
 
-  create_table "rich_rich_files", :force => true do |t|
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.string   "rich_file_file_name"
-    t.string   "rich_file_content_type"
-    t.integer  "rich_file_file_size"
-    t.datetime "rich_file_updated_at"
-    t.string   "owner_type"
-    t.integer  "owner_id"
-    t.text     "uri_cache"
-    t.string   "simplified_type",        :default => "file"
+  create_table "reviews", :force => true do |t|
+    t.string   "revie"
+    t.integer  "livro_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -1,4 +1,4 @@
-= form_for @livro, :html => { :class => 'form-horizontal' } do |f|
+= form_for @livro, :html => {:multipart => true, :class => 'form-horizontal' } do |f|
   .control-group
     = f.label :nome, :class => 'control-label'
     .controls
@@ -25,8 +25,11 @@
     .controls
       = f.number_field :preco, :class => 'number_field', :class=>"span1"
       (€)
+  =f.fields_for :reviews do |builder|
+    = render "review_fields", :f => builder
   -if @livro.id.nil?
-    =render :partial => "new_photos_form", :locals => { :f => f }
+    =f.fields_for :photos do |builder|
+      = render "photo_fields", :f => builder
   -else
     =render :partial => "edit_photos_form", :locals => { :f => f }
   .form-actions
