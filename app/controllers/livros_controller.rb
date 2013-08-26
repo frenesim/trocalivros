@@ -17,9 +17,11 @@ class LivrosController < ApplicationController
   def show
     session[:return_to] = request.referer
     @livro = Livro.find(params[:id])
+    @photos = @livro.photos
+
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @livro }
+      format.json { render json: {files: [@photos.to_jq_upload]}, status: :created, location: @livro  }
     end
   end
 
@@ -32,7 +34,7 @@ class LivrosController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @livro }
+      format.json { render json: @livro}
     end
   end
 
@@ -46,17 +48,16 @@ class LivrosController < ApplicationController
   def create
     @livro = Livro.new(params[:livro])
     @livro.user_id = current_user.id
-    @photo = Photo.new(params[:livro][:photos_attributes][0])
 
     respond_to do |format|
       if @livro.save
-        #format.html { redirect_to @livro, notice: 'Livro was successfully created.' }
+        format.html { redirect_to @livro, notice: 'Livro was successfully created.' }
         format.html {
           render :json => [@photo.to_jq_upload].to_json,
                  :content_type => 'text/html',
                  :layout => false
         }
-        format.json { render json: {files: [@photo.to_jq_upload]}, status: :created, location: @livro }
+        #format.json { render json: {files: [@photo.to_jq_upload]}, status: :created, location: @livro }
       else
         format.html { render action: "new" }
         format.json { render json: @livro.errors, status: :unprocessable_entity }
