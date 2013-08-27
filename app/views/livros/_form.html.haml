@@ -1,4 +1,4 @@
-= form_for @livro, :html => {:multipart => true, :class => 'form-horizontal' } do |f|
+= form_for @livro, :html => {:multipart => true, :class => 'form-horizontal', :id => "fileupload" } do |f|
   .control-group
     = f.label :nome, :class => 'control-label'
     .controls
@@ -25,11 +25,16 @@
     .controls
       = f.number_field :preco, :class => 'number_field', :class=>"span1"
       (€)
-  -if @livro.id.nil?
-    =f.fields_for :photos do |builder|
-      = render "photo_fields", :f => builder
-  -else
-    =render :partial => "edit_photos_form", :locals => { :f => f }
+  .row.fileupload-buttonbar
+    .control-group
+      .controls
+        %span.btn.btn-success.fileinput-button
+          %i.icon-plus.icon-white
+          %span Adicionar Foto
+          = f.fields_for :photos do |b|
+            =b.file_field :photo, :class => 'photo_field'
+      %table.table.table-striped.span9.offset1
+        %tbody.files{:data => {:toggle=>"modal-gallery", :target=>"#modal-gallery"}}
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), livros_path, :class => 'btn'
