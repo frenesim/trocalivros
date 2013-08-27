@@ -21,7 +21,6 @@ Trocalivros::Application.routes.draw do
 
   resources :livros do
     resources :users
-    resources :photos
   end
 
   # The priority is based upon order of creation:
