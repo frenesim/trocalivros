@@ -27,8 +27,6 @@ class LivrosController < ApplicationController
   # GET /livros/new.json
   def new
     @livro = Livro.new
-    review = @livro.reviews.build
-    photo = @livro.photos.build
 
     respond_to do |format|
       format.html # new.html.erb

@@ -25,8 +25,6 @@
     .controls
       = f.number_field :preco, :class => 'number_field', :class=>"span1"
       (€)
-  =f.fields_for :reviews do |builder|
-    = render "review_fields", :f => builder
   -if @livro.id.nil?
     =f.fields_for :photos do |builder|
       = render "photo_fields", :f => builder
