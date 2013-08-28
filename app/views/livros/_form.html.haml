@@ -25,14 +25,19 @@
     .controls
       = f.number_field :preco, :class => 'number_field', :class=>"span1"
       (€)
+  .control-group
+    .controls
+      =f.fields_for :photos do |p|
+        =p.file_field :photo
+
   .row.fileupload-buttonbar
     .control-group
       .controls
         %span.btn.btn-success.fileinput-button
           %i.icon-plus.icon-white
           %span Adicionar Foto
-          = f.fields_for :photos do |b|
-            =b.file_field :photo, :class => 'photo_field'
+          = f.fields_for :photos do |p|
+            =p.file_field :photo
       %table.table.table-striped.span9.offset1
         %tbody.files{:data => {:toggle=>"modal-gallery", :target=>"#modal-gallery"}}
   .form-actions

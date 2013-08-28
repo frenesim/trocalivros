@@ -19,6 +19,9 @@ $(document).ready ->
 
   # Initialize the jQuery File Upload widget:
   $("#fileupload").fileupload()
+    #autoUpload: false
+    #singleFileUploads: false
+    #submit: false
     #url: '/photos/'
   #
   # Load existing files:

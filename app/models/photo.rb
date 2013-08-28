@@ -1,6 +1,5 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :livro_id
-  attr_accessible :photo
+  attr_accessible :livro_id, :photo
 
   belongs_to :livro
 
