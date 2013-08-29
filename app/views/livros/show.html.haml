@@ -26,7 +26,9 @@
     .well
       %strong= 'Fotos:'
       .row-fluid.offset1
-        Imagens não disponíveis
+        -@livro.photos.each do |p|
+          =image_tag p.photo.url(:thumb)
+
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), redirect_back, :class => 'btn'
   = link_to t('.contact', :default => t("helpers.links.contact")), livro_user_path(@livro), :class => 'btn'

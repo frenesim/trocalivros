@@ -25,27 +25,23 @@
     .controls
       = f.number_field :preco, :class => 'number_field', :class=>"span1"
       (€)
-  .control-group
-    .controls
-      =f.fields_for :photos do |p|
-        =p.file_field :photo
-
   .row.fileupload-buttonbar
-    .control-group
-      .controls
-        %span.btn.btn-success.fileinput-button
-          %i.icon-plus.icon-white
-          %span Adicionar Foto
-          = f.fields_for :photos do |p|
+    = f.fields_for :photos do |p|
+      .control-group
+        .controls
+          %span.btn.btn-success.fileinput-button
+            %i.icon-plus.icon-white
+            %span Adicionar Foto
             =p.file_field :photo
-      %table.table.table-striped.span9.offset1
-        %tbody.files{:data => {:toggle=>"modal-gallery", :target=>"#modal-gallery"}}
+    %table.table.table-striped.span9.offset1
+      %tbody.files{:data => {:toggle=>"modal-gallery", :target=>"#modal-gallery"}}
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), livros_path, :class => 'btn'
 
 / The template to display files available for upload
 %script{:id => 'template-upload', :type => "text/x-tmpl"}
+
   {% for (var i=0, file; file=o.files[i]; i++) { %}
   <tr class="template-upload fade">
   <td class="preview"><span class="fade"></span></td>
