@@ -1,8 +1,5 @@
 Trocalivros::Application.routes.draw do
 
-  resources :apagas
-
-
   get "apagas/new"
 
   get "apagas/create"
