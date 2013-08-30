@@ -1,7 +1,7 @@
 class Photo < ActiveRecord::Base
   attr_accessible :livro_id, :image_path
   belongs_to :livro
-  mount_uploader :image_path, AssetUploader
+  mount_uploader :image_path, TestImagesUploader
 
 
   def to_jq_upload

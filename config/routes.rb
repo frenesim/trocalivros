@@ -1,5 +1,22 @@
 Trocalivros::Application.routes.draw do
 
+  resources :apagas
+
+
+  get "apagas/new"
+
+  get "apagas/create"
+
+  get "apagas/update"
+
+  get "apagas/edit"
+
+  get "apagas/destroy"
+
+  get "apagas/index"
+
+  get "apagas/show"
+
   root :to => 'livros#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -19,8 +36,11 @@ Trocalivros::Application.routes.draw do
 
   resources :editoras
 
+  resources :photos
+
   resources :livros do
     resources :users
+    resources :photos
   end
 
   # The priority is based upon order of creation:

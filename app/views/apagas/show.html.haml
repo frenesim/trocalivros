@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @apaga.name
+%p
+  %b Image:
+  = @apaga.image
+
+= link_to 'Edit', edit_apaga_path(@apaga)
+\|
+= link_to 'Back', apagas_path

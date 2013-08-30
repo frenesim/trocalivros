@@ -18,8 +18,9 @@ $(document).ready ->
     emptyResult: 'Empty file upload result'
 
   # Initialize the jQuery File Upload widget:
-  $("#fileupload").fileupload()
-  #
+  $("#fileupload").fileupload
+    url: '/photos/'
+
   # Load existing files:
   $.getJSON $("#fileupload").prop("action"), (files) ->
     fu = $("#fileupload").data("blueimpFileupload")
