@@ -1,5 +1,4 @@
 class PhotosController < ApplicationController
-
   before_filter :authenticate_user!
 
   def create
@@ -7,11 +6,10 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        @photos_ids = params[:photos_ids]
-        @photos_ids.push(@photo.id)
-        format.json { photos_ids = @photos_ids}
+        @photo.store_photos_ids @photo.id
+        format.json {render json: @photo.to_jq_upload}
       else
-        format.json { render json: @photos.errors, status: :unprocessable_entity }
+        format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
     end
   end

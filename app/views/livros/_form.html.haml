@@ -25,7 +25,6 @@
     .controls
       = f.number_field :preco, :class => 'number_field', :class=>"span1"
       (€)
-      = f.hidden_field :photos_ids, value: :photos_ids
   .row.fileupload-buttonbar
     = f.fields_for :photos do |p|
       .control-group

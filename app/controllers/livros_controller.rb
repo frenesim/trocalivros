@@ -47,6 +47,7 @@ class LivrosController < ApplicationController
 
     respond_to do |format|
       if @livro.save
+        save_photos_ids @livro.id
         format.html { redirect_to @livro, notice: 'Livro was successfully created.' }
 
       else
