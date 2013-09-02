@@ -52,7 +52,7 @@ class LivrosController < ApplicationController
       else
         flash[:error] = @livro.errors.full_messages
         format.html { render action: "new"}
-        format.json { render json: @livro.errors.full_messages, status: :unprocessable_entity }
+        format.json { render json: @livro.errors, status: :unprocessable_entity }
       end
     end
   end

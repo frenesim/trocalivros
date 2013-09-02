@@ -1,6 +1,4 @@
 = form_for @livro, :html => {:multipart => true, :class => 'form-horizontal', :id => 'fileupload' } do |f|
-  =render partial: "shared/flash_messages", :locals => {flash: flash}
-
   .control-group
     = f.label :nome, :class => 'control-label'
     .controls
