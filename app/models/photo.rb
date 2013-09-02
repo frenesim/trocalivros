@@ -16,11 +16,4 @@ class Photo < ActiveRecord::Base
     }
   end
 
-  def store_photos_ids(photo_id)
-    if session[:photos_ids].nil?
-      session[:photos_ids] = [photo_id]
-    else
-      session[:photos_ids] << photo_id
-    end
-  end
 end

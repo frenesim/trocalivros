@@ -49,10 +49,10 @@ class LivrosController < ApplicationController
       if @livro.save
         save_photos_ids @livro.id
         format.html { redirect_to @livro, notice: 'Livro was successfully created.' }
-
       else
-        format.html { render action: "new" }
-        format.json { render json: @livro.errors, status: :unprocessable_entity }
+        flash[:error] = @livro.errors.full_messages
+        format.html { render action: "new"}
+        format.json { render json: @livro.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end
@@ -68,7 +68,7 @@ class LivrosController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @livro.errors, status: :unprocessable_entity }
+        format.json { render json: @livro.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end
@@ -82,6 +82,17 @@ class LivrosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to livros_url }
       format.json { head :no_content }
+    end
+  end
+
+  private
+  def save_photos_ids(livro_id)
+    unless session[:photos_ids].nil?
+      @photos = Photo.find(session[:photos_ids])
+      session.delete(:photos_ids)
+      @photos.each do |p|
+        p.update_attributes( { livro_id: livro_id } ) if p.livro_id.nil?
+      end
     end
   end
 end

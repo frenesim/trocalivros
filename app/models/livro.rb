@@ -8,6 +8,8 @@ class Livro < ActiveRecord::Base
 
   has_many :photos
 
+  validates_presence_of :nome, :ano_escolaridade, :autore_id, :preco, :disciplina_id, :user_id
+
   accepts_nested_attributes_for :photos
 
   def self.simple_search(search_text)
