@@ -15,7 +15,7 @@
     = f.label "Escolaridade", :class => 'control-label'
     .controls
       = f.select :ano_escolaridade, options_for_select((5..12).map{|a| a.to_s+"º"},@livro.ano_escolaridade.to_s+"º"), {:include_blank => true},:class=>"span1"
-      Ano
+      ="Ano".html_safe
   .control-group
     = f.label "Autor", :class => 'control-label'
     .controls
@@ -24,7 +24,8 @@
     = f.label "Preço", :class => 'control-label'
     .controls
       = f.number_field :preco, :class => 'number_field', :class=>"span1"
-      (€)
+      ="(€)".html_safe
+
   .row.fileupload-buttonbar
     = f.fields_for :photos do |p|
       .control-group

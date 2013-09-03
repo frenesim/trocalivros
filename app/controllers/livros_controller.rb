@@ -37,6 +37,7 @@ class LivrosController < ApplicationController
   # GET /livros/1/edit
   def edit
     @livro = Livro.find(params[:id])
+    @livro.photos.build
   end
 
   # POST /livros
@@ -50,6 +51,7 @@ class LivrosController < ApplicationController
         save_photos_ids @livro.id
         format.html { redirect_to @livro, notice: 'Livro was successfully created.' }
       else
+        @livro.photos.build
         flash[:error] = @livro.errors.full_messages
         format.html { render action: "new"}
         format.json { render json: @livro.errors, status: :unprocessable_entity }
