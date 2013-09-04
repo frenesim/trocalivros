@@ -7,11 +7,18 @@ class PhotosController < ApplicationController
     respond_to do |format|
       if @photo.save
         store_photos_ids @photo.id
-        format.json {render json: @photo.to_jq_upload}
+
+        format.json {render json: {files: [@photo.to_jq_upload]}, status: :created}
       else
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
+        render :json => [{:error => "custom_failure"}], :status => 304
       end
     end
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    render :json => true
   end
 
   private
