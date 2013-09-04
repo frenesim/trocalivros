@@ -48,8 +48,10 @@ group :production do
   gem 'pg'
 end
 
+gem 'activeadmin'
+
 gem 'foreigner'
-gem 'jquery-rails'
+gem "jquery-rails", "< 3.0.0"
 gem 'jquery-ui-rails'
 gem "jquery-fileupload-rails"
 
@@ -57,7 +59,7 @@ gem "cancan"
 
 gem 'haml-rails'
 
-gem 'activeadmin'
+
 gem 'devise'
 
 gem 'simple-navigation-bootstrap'
