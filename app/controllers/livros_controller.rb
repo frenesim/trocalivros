@@ -28,9 +28,13 @@ class LivrosController < ApplicationController
   def new
     @livro = Livro.new
     @livro.photos.build
+    @photo = Photo.find(session[:photos_ids])
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @livro }
+      @aaa = []
+      @photo.each {|p| @aaa.push([p.to_jq_upload])}
+      format.json {render json: {files: @aaa}, status: :created}
+      #format.json { render json: @livro }
     end
   end
 
@@ -48,13 +52,27 @@ class LivrosController < ApplicationController
 
     respond_to do |format|
       if @livro.save
-        save_photos_ids @livro.id
-        format.html { redirect_to @livro, notice: 'Livro was successfully created.' }
+        begin
+          save_photos_ids @livro.id
+        rescue
+          flash[:error] = 'Aconteceu algo inesperado. Lamento, mas terá que repetir a introdução do Livro'
+          format.html { render action: "index"}
+        else
+          format.html { redirect_to @livro, notice: 'Livro was successfully created.' }
+        end
       else
         @livro.photos.build
+        @photo = Photo.find(session[:photos_ids])
+        @aaa = []
+        @photo.each {|p| @aaa.push(p.to_jq_upload)}
+        @bbb =  @photo.each do |p|
+                  p.to_jq_upload
+                end
+        format.json {render json: {files: @aaa}, status: :created}
         flash[:error] = @livro.errors.full_messages
         format.html { render action: "new"}
         format.json { render json: @livro.errors, status: :unprocessable_entity }
+        true
       end
     end
   end
@@ -90,8 +108,8 @@ class LivrosController < ApplicationController
   private
   def save_photos_ids(livro_id)
     unless session[:photos_ids].nil?
-      @photos = Photo.find(session[:photos_ids])
-      session.delete(:photos_ids)
+      photos_ids = session.delete(:photos_ids)
+      @photos = Photo.find(photos_ids)
       @photos.each do |p|
         p.update_attributes( { livro_id: livro_id } ) if p.livro_id.nil?
       end
