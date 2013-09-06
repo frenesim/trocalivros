@@ -9,9 +9,9 @@ module LivrosHelper
 
   def main_photo_thumb(livro)
     unless livro.photos.empty?
-      return image_tag Photo.find_by_livro_id(livro).photo_url(:thumb)
+      return image_tag Photo.find_by_livro_id(livro).image_url(:thumb)
     else
-      'Imagem indisponível'
+      'X'
     end
   end
 
