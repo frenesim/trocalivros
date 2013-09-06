@@ -54,6 +54,7 @@ gem 'foreigner'
 gem "jquery-rails", "< 3.0.0"
 gem 'jquery-ui-rails'
 gem "jquery-fileupload-rails"
+gem 'bootstrap-addons-rails'
 
 gem "cancan"
 
