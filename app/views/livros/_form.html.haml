@@ -32,8 +32,8 @@
           %span.btn.btn-success.fileinput-button
             %i.icon-plus.icon-white
             %span Adicionar Foto
-            =p.file_field :image_path
-            //=p.file_field :image_path, multiple: true
+            =p.file_field :image
+            //=p.file_field :image, multiple: true
 
     %table.table.table-striped.span9.offset1
       %tbody.files{:data => {:toggle=>"modal-gallery", :target=>"#modal-gallery"}}

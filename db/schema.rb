@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20130829181941) do
     t.integer  "livro_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "image_path"
+    t.string   "image"
   end
 
   create_table "users", :force => true do |t|
