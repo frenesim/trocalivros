@@ -1,19 +1,5 @@
 Trocalivros::Application.routes.draw do
 
-  get "apagas/new"
-
-  get "apagas/create"
-
-  get "apagas/update"
-
-  get "apagas/edit"
-
-  get "apagas/destroy"
-
-  get "apagas/index"
-
-  get "apagas/show"
-
   root :to => 'livros#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
