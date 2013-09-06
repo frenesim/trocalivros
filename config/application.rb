@@ -72,6 +72,6 @@ module Trocalivros
     # data type, http status, and character encodings. jquery-fileupload-rails includes a middleware
     # that handles these inconsistencies seamlessly. If you decide to use it, create an initializer
     # that adds the middleware to your application's middleware stack.
-    config.middleware.use JQuery::FileUpload::Rails::Middleware
+    #config.middleware.use JQuery::FileUpload::Rails::Middleware
   end
 end

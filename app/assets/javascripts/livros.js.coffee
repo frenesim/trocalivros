@@ -19,6 +19,7 @@ $(document).ready ->
 
   $("#fileupload").fileupload
     url: "/photos/"
+    autoUpload: true
 
   $.getJSON $("#fileupload").prop("action"), (files) ->
     fu = $("#fileupload").data("blueimpFileupload")

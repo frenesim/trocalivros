@@ -26,16 +26,17 @@ class LivrosController < ApplicationController
   # GET /livros/new
   # GET /livros/new.json
   def new
+  #  session[:photos_ids].delete if session[:photos_ids].empty?
     @livro = Livro.new
     @livro.photos.build
-    @photo = Photo.find(session[:photos_ids])
-    respond_to do |format|
-      format.html # new.html.erb
-      @aaa = []
-      @photo.each {|p| @aaa.push([p.to_jq_upload])}
-      format.json {render json: {files: @aaa}, status: :created}
-      #format.json { render json: @livro }
-    end
+  #  @photo = Photo.find(session[:photos_ids])
+  #  respond_to do |format|
+  #    format.html # new.html.erb
+  #    @aaa = []
+  #    @photo.each {|p| @aaa.push([p.to_jq_upload])}
+  #    format.json {render json: {files: @aaa}, status: :created}
+  #    #format.json { render json: @livro }
+  #  end
   end
 
   # GET /livros/1/edit
