@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-    #@photo = Photo.new({:image => params[:livro][:photos_attributes]['0'][:image][0]})
+    # @photo = Photo.new({:image => params[:livro][:photos_attributes]['0'][:image][0]})
     @photo = Photo.new(params[:livro][:photos_attributes]['0'])
 
     respond_to do |format|
@@ -10,7 +10,8 @@ class PhotosController < ApplicationController
         store_photos_ids @photo.id
         format.json {render json: {files: [@photo.to_jq_upload]}, status: :created}
       else
-        render :json => [{:error => "custom_failure"}], :status => 304
+        render :json => [ @photo.to_jq_upload.merge({ :error => "custom_failure" }) ].to_json
+        #render :json => [{:error => "custom_failure"}], :status => 304
       end
     end
   end

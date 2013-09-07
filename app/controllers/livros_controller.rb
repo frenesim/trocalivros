@@ -42,6 +42,8 @@ class LivrosController < ApplicationController
   # GET /livros/1/edit
   def edit
     @livro = Livro.find(params[:id])
+    @photos = @livro.photos
+
     @livro.photos.build
   end
 
@@ -63,13 +65,13 @@ class LivrosController < ApplicationController
         end
       else
         @livro.photos.build
-        @photo = Photo.find(session[:photos_ids])
-        @aaa = []
-        @photo.each {|p| @aaa.push(p.to_jq_upload)}
-        @bbb =  @photo.each do |p|
-                  p.to_jq_upload
-                end
-        format.json {render json: {files: @aaa}, status: :created}
+        #@photo = Photo.find(session[:photos_ids])
+        #@aaa = []
+        #@photo.each {|p| @aaa.push(p.to_jq_upload)}
+        #@bbb =  @photo.each do |p|
+        #          p.to_jq_upload
+        #        end
+        #format.json {render json: {files: @aaa}, status: :created}
         flash[:error] = @livro.errors.full_messages
         format.html { render action: "new"}
         format.json { render json: @livro.errors, status: :unprocessable_entity }
