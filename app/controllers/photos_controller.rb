@@ -1,6 +1,16 @@
 class PhotosController < ApplicationController
   before_filter :authenticate_user!
+  def index
+    true
+  end
 
+  def edit
+    true
+  end
+
+  def show
+    true
+  end
   def create
     # @photo = Photo.new({:image => params[:livro][:photos_attributes]['0'][:image][0]})
     @photo = Photo.new(params[:livro][:photos_attributes]['0'])

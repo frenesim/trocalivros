@@ -17,9 +17,11 @@ class LivrosController < ApplicationController
   def show
     session[:return_to] = request.referer
     @livro = Livro.find(params[:id])
+    @show = "show"
+    @photo = @livro.photos.first
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @livro }
+      format.json { render json: {files: [@photo.to_jq_upload]} }
     end
   end
 
@@ -42,9 +44,10 @@ class LivrosController < ApplicationController
   # GET /livros/1/edit
   def edit
     @livro = Livro.find(params[:id])
-    @photos = @livro.photos
-
-    @livro.photos.build
+    @photo = @livro.photos.first
+    @edit = 'edit'
+    #render json: {files: [@photo.to_jq_upload]}, status: :created
+    #@livro.photos.build
   end
 
   # POST /livros
