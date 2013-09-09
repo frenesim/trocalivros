@@ -1,8 +1,8 @@
 .simple_search_form.well
   .row-fluid
-  =form_tag livros_path, :method => "get" do
+  =form_tag livros_path, :method => 'get' do
     = label_tag :simple_search, "Procuro:"
     .input-append
-      = text_field_tag :simple_search, params[:simple_search], :class=>"span12 search-query"
-      = submit_tag "Ir", :name => nil,:class=>"span3 btn"
+      = text_field_tag :simple_search, params[:simple_search], :class=>'span12 search-query'
+      = submit_tag 'Ir', :name => nil,:class=>'span3 btn'
 
