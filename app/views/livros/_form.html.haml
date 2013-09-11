@@ -1,4 +1,4 @@
-= form_for @livro, :html => {:multipart => true, :class => 'form-horizontal', :id => 'fileupload' } do |f|
+= form_for @livro, :html => {:multipart => true, :class => 'form-horizontal', :id => 'fileupload', data: {images: @file}} do |f|
   .control-group
     = f.label :nome, :class => 'control-label'
     .controls
@@ -27,13 +27,10 @@
       (€)
   .row.fileupload-buttonbar
     = f.fields_for :photos do |p|
-      .control-group
-        .controls
-          %span.btn.btn-success.fileinput-button
-            %i.icon-plus.icon-white
-            %span Adicionar Foto
-            =p.file_field :image
-            //=p.file_field :image, multiple: true
+      - if @livro.id.nil?
+        =render :partial => "new_photos", locals: {p: p}
+      -else
+        =render :partial => "edit_photos", locals: {p: p, f: f, livro: @livro}
 
     %table.table.table-striped.span9.offset1
       %tbody.files{:data => {:toggle=>"modal-gallery", :target=>"#modal-gallery"}}
@@ -45,7 +42,7 @@
 
 / The template to display files available for upload
 %script{:id => 'template-upload', :type => "text/x-tmpl"}
-  {% for (var i=0, file; file=o.files[i]; i++) { %}
+  {%for (var i=0, file; file=o.files[i]; i++) { console.dir(o.files); console.log(o.files);%}
   <tr class="template-upload fade">
   <td class="preview"><span class="fade"></span></td>
   <td class="name"><span>{%=file.name%}</span></td>

@@ -2,9 +2,8 @@ class PhotosController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-    #@photo = Photo.new({:image => params[:livro][:photos_attributes]['0'][:image][0]})
     @photo = Photo.new(params[:livro][:photos_attributes]['0'])
-
+    #@photos = Photo.new({:image => params[:livro][:photos_attributes]['0'][:image]})
     respond_to do |format|
       if @photo.save
         store_photos_ids @photo.id
@@ -18,8 +17,9 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy
-    session[:photos_ids].delete(@photo.id)
+    session[:photos_ids].delete(@photo.id) unless session[:photos_ids].nil?
     render :json => true
+
   end
 
   private
