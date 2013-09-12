@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:id])
-    @
+
     @photo.destroy
     session[:photos_ids].delete(@photo.id) unless session[:photos_ids].nil?
     render :json => true
