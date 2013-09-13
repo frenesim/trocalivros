@@ -16,10 +16,14 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:id])
-
+    livro_id = @photo.livro_id
     @photo.destroy
     session[:photos_ids].delete(@photo.id) unless session[:photos_ids].nil?
-    render :json => true
+    if livro_id
+      redirect_to edit_livro_path(livro_id)
+    else
+      render :json => true
+    end
 
   end
 
