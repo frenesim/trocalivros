@@ -17,11 +17,9 @@ class LivrosController < ApplicationController
   def show
     session[:return_to] = request.referer
     @livro = Livro.find(params[:id])
-    @show = "show"
-    @photo = @livro.photos.first
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: {files: [@photo.to_jq_upload]} }
+      format.json { render json: @livro }
     end
   end
 
@@ -44,10 +42,7 @@ class LivrosController < ApplicationController
   # GET /livros/1/edit
   def edit
     @livro = Livro.find(params[:id])
-    @photo = @livro.photos.first
-    @edit = 'edit'
-    #render json: {files: [@photo.to_jq_upload]}, status: :created
-    #@livro.photos.build
+    @livro.photos.build
   end
 
   # POST /livros
@@ -68,13 +63,13 @@ class LivrosController < ApplicationController
         end
       else
         @livro.photos.build
-        #@photo = Photo.find(session[:photos_ids])
-        #@aaa = []
-        #@photo.each {|p| @aaa.push(p.to_jq_upload)}
-        #@bbb =  @photo.each do |p|
-        #          p.to_jq_upload
-        #        end
-        #format.json {render json: {files: @aaa}, status: :created}
+        @photo = Photo.find(session[:photos_ids])
+        @aaa = []
+        @photo.each {|p| @aaa.push(p.to_jq_upload)}
+        @bbb =  @photo.each do |p|
+                  p.to_jq_upload
+                end
+        format.json {render json: {files: @aaa}, status: :created}
         flash[:error] = @livro.errors.full_messages
         format.html { render action: "new"}
         format.json { render json: @livro.errors, status: :unprocessable_entity }
