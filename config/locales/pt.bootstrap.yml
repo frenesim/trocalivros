@@ -2,6 +2,13 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 pt:
+  livro:
+    delete:
+      confirm: "Deseja apagar o Livro %{name} ?"
+  photo:
+    delete:
+      confirm: "Deseja apagar a photo?"
+    add: "Adicionar foto"
   helpers:
     actions: "Ações"
     links:

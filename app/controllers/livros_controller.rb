@@ -8,15 +8,6 @@ class LivrosController < ApplicationController
     @livros = Livro.simple_search params[:simple_search]
     unless session[:photos_ids].nil?
       @photo = Photo.find(session[:photos_ids])
-      @aaa = []
-      @photo.each {|p| @aaa.push([p.to_jq_upload])}
-      @bbb =  @photo.each do |p|
-        p.to_jq_upload
-      end
-    end
-    respond_to do |format|
-      format.html
-      format.json {render json: {files: @aaa}, status: :created}
     end
   end
 

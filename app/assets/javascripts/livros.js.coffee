@@ -18,7 +18,7 @@ $(document).ready ->
     emptyResult: 'Empty file upload result'
 
   $("#fileupload").fileupload
-    url: "/photos/"
+    url: '/photos/'
     autoUpload: true
     #add: {files: images}
 

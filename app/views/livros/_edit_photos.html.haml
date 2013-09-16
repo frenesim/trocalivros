@@ -1,8 +1,7 @@
 .control-group
   .controls
     =image_tag p.object.image_url(:thumb)
-    %span.btn.btn-danger.fileinput-button
-      %span
-      =link_to 'Apagar', photo_path(p.object.id), method: 'delete'
+    %span.fileinput-button
+      =link_to t('helpers.links.destroy'), photo_path(p.object.id), method: 'delete', :data => { :confirm => t('photo.delete.confirm') }, :class => 'btn btn-danger'
 
 //=p.file_field :image, multiple: true
