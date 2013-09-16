@@ -73,6 +73,7 @@ class LivrosController < ApplicationController
   # PUT /livros/1.json
   def update
     @livro = Livro.find(params[:id])
+    save_photos_ids @livro.id
 
     respond_to do |format|
       if @livro.update_attributes(params[:livro])

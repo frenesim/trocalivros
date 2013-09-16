@@ -15,6 +15,13 @@ class PhotosController < ApplicationController
     end
   end
 
+  def edit
+    create
+  end
+  def upload
+    create
+  end
+
   def destroy
     @photo = Photo.find(params[:id])
     livro_id = @photo.livro_id
