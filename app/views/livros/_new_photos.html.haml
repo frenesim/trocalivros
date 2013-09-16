@@ -2,6 +2,7 @@
   .controls
     %span.btn.btn-success.fileinput-button
       %i.icon-plus.icon-white
-      %span Adicionar Foto
-      =p.file_field :image
+      %span
+      =t("photo.add")
+      =f.file_field :image
 //=p.file_field :image, multiple: true

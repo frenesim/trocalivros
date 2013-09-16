@@ -2,8 +2,8 @@ class PhotosController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-    #@photo = Photo.new({:image => params[:livro][:photos_attributes]['0'][:image][0]})
-    @photo = Photo.new(params[:livro][:photos_attributes]['0'])
+    #@photo = Photo.new(params[:livro][:photos_attributes]['0'])
+    @photo = Photo.new( :image => params[:livro][:image] )
     #@photos = Photo.new({:image => params[:livro][:photos_attributes]['0'][:image]})
     respond_to do |format|
       if @photo.save
@@ -14,6 +14,13 @@ class PhotosController < ApplicationController
         #render :json => [{:error => "custom_failure"}], :status => 304
       end
     end
+  end
+
+  def edit
+    create
+  end
+  def upload
+    create
   end
 
   def destroy

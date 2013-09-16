@@ -19,7 +19,9 @@ Trocalivros::Application.routes.draw do
 
   resources :editoras
 
-  resources :photos
+
+  resources :photos, :except => :create
+  match '/photos' => 'photos#upload'
 
   resources :livros do
     resources :users

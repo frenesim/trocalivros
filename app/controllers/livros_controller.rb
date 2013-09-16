@@ -6,9 +6,8 @@ class LivrosController < ApplicationController
 
   def index
     @livros = Livro.simple_search params[:simple_search]
-
-    respond_to do |format|
-      format.html
+    unless session[:photos_ids].nil?
+      @photo = Photo.find(session[:photos_ids])
     end
   end
 
@@ -29,20 +28,16 @@ class LivrosController < ApplicationController
   #  session[:photos_ids].delete if session[:photos_ids].empty?
     @livro = Livro.new
     @livro.photos.build
-  #  @photo = Photo.find(session[:photos_ids])
-  #  respond_to do |format|
-  #    format.html # new.html.erb
-  #    @aaa = []
-  #    @photo.each {|p| @aaa.push([p.to_jq_upload])}
-  #    format.json {render json: {files: @aaa}, status: :created}
-  #    #format.json { render json: @livro }
-  #  end
-  end
+      respond_to do |format|
+        format.html # new.html.erb
+        #format.json { render json: @livro }
+      end
+    end
 
   # GET /livros/1/edit
   def edit
     @livro = Livro.find(params[:id])
-    @livro.photos.build
+    #@livro.photos.build
   end
 
   # POST /livros
@@ -66,10 +61,6 @@ class LivrosController < ApplicationController
         @photo = Photo.find(session[:photos_ids])
         @aaa = []
         @photo.each {|p| @aaa.push(p.to_jq_upload)}
-        @bbb =  @photo.each do |p|
-                  p.to_jq_upload
-                end
-        format.json {render json: {files: @aaa}, status: :created}
         flash[:error] = @livro.errors.full_messages
         format.html { render action: "new"}
         format.json { render json: @livro.errors, status: :unprocessable_entity }
@@ -82,6 +73,7 @@ class LivrosController < ApplicationController
   # PUT /livros/1.json
   def update
     @livro = Livro.find(params[:id])
+    save_photos_ids @livro.id
 
     respond_to do |format|
       if @livro.update_attributes(params[:livro])
