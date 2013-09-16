@@ -6,9 +6,6 @@ class LivrosController < ApplicationController
 
   def index
     @livros = Livro.simple_search params[:simple_search]
-    unless session[:photos_ids].nil?
-      @photo = Photo.find(session[:photos_ids])
-    end
   end
 
   # GET /livros/1
@@ -57,10 +54,7 @@ class LivrosController < ApplicationController
           format.html { redirect_to @livro, notice: 'Livro was successfully created.' }
         end
       else
-        @livro.photos.build
-        @photo = Photo.find(session[:photos_ids])
-        @aaa = []
-        @photo.each {|p| @aaa.push(p.to_jq_upload)}
+        @photos = Photo.find({id: nil,user_id: current_user})
         flash[:error] = @livro.errors.full_messages
         format.html { render action: "new"}
         format.json { render json: @livro.errors, status: :unprocessable_entity }
