@@ -22,7 +22,7 @@ class LivrosController < ApplicationController
   # GET /livros/new
   # GET /livros/new.json
   def new
-  #  session[:photos_ids].delete if session[:photos_ids].empty?
+    session[:photos_ids].delete unless session[:photos_ids].nil?
     @livro = Livro.new
     @livro.photos.build
       respond_to do |format|
@@ -96,7 +96,7 @@ class LivrosController < ApplicationController
   def save_photos_ids(livro_id)
     unless session[:photos_ids].nil?
       photos_ids = session.delete(:photos_ids)
-      @photos = Photo.find(photos_ids)
+      @photos = Photo.where(id: photos_ids).where(user_id: current_user.id)
       @photos.each do |p|
         p.update_attributes( { livro_id: livro_id } ) if p.livro_id.nil?
       end

@@ -2,7 +2,7 @@ class Photo < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   attr_accessible :livro_id, :image
   belongs_to :livro
-  belongs_to :user, through: :livro
+  belongs_to :user
   mount_uploader :image, AssetUploader
 
 
@@ -17,7 +17,7 @@ class Photo < ActiveRecord::Base
     }
   end
 
-  def scoped_by_user
+  def scope_by_user
     where(user_id: current_user)
   end
 
