@@ -21,7 +21,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     livro_id = @photo.livro_id
     @photo.destroy
-    session[:photos_ids].delete(@photo.id) unless session[:photos_ids].nil?
+    session[:photos_ids].delete(@photo.id) unless session[:photos_ids].empty?
     if livro_id
       redirect_to edit_livro_path(livro_id)
     else

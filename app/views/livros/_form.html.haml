@@ -26,9 +26,10 @@
       = f.number_field :preco, :class => 'number_field', :class=>"span1"
       (€)
   .row.fileupload-buttonbar
-    -unless @livro.id.nil?
-      = f.fields_for :photos do |p|
-        =render :partial => "edit_photos", locals: {p: p}
+    -unless @photos.nil? #||=Photo.find(session[:photos_ids]) unless session[:photos_ids].empty?
+      -@photos.each do |photo|
+        =render :partial => "edit_photos", locals: {p: photo}
+
     .control-group
       .controls
         %span.btn.btn-success.fileinput-button

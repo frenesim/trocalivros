@@ -3,6 +3,7 @@ class LivrosController < ApplicationController
   # GET /livros.json
 
   before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :set_session
 
   def index
     @livros = Livro.simple_search params[:simple_search]
@@ -22,7 +23,7 @@ class LivrosController < ApplicationController
   # GET /livros/new
   # GET /livros/new.json
   def new
-    session[:photos_ids].delete unless session[:photos_ids].nil?
+    session[:photos_ids].clear unless session[:photos_ids].nil?
     @livro = Livro.new
     @livro.photos.build
       respond_to do |format|
@@ -34,6 +35,7 @@ class LivrosController < ApplicationController
   # GET /livros/1/edit
   def edit
     @livro = Livro.find(params[:id])
+    @photos = @livro.photos
     #@livro.photos.build
   end
 
@@ -42,6 +44,7 @@ class LivrosController < ApplicationController
   def create
     @livro = Livro.new(params[:livro])
     @livro.user_id = current_user.id
+    @photos = Photo.where(id: nil,user_id: current_user)
 
     respond_to do |format|
       if @livro.save
@@ -54,11 +57,9 @@ class LivrosController < ApplicationController
           format.html { redirect_to @livro, notice: 'Livro was successfully created.' }
         end
       else
-        @photos = Photo.find({id: nil,user_id: current_user})
         flash[:error] = @livro.errors.full_messages
         format.html { render action: "new"}
         format.json { render json: @livro.errors, status: :unprocessable_entity }
-        true
       end
     end
   end
@@ -95,11 +96,15 @@ class LivrosController < ApplicationController
   private
   def save_photos_ids(livro_id)
     unless session[:photos_ids].nil?
-      photos_ids = session.delete(:photos_ids)
-      @photos = Photo.where(id: photos_ids).where(user_id: current_user.id)
+      @photos = Photo.where(id: session[:photos_ids]).where(user_id: current_user.id)
+      session[:photos_ids].clear
       @photos.each do |p|
         p.update_attributes( { livro_id: livro_id } ) if p.livro_id.nil?
       end
     end
+  end
+
+  def set_session
+    session[:photos_ids] ||= []
   end
 end
