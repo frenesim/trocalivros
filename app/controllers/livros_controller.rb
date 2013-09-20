@@ -44,7 +44,7 @@ class LivrosController < ApplicationController
   def create
     @livro = Livro.new(params[:livro])
     @livro.user_id = current_user.id
-    @photos = Photo.where(id: nil,user_id: current_user)
+    @photos = Photo.where(livro_id: nil,user_id: current_user)
 
     respond_to do |format|
       if @livro.save
@@ -75,8 +75,10 @@ class LivrosController < ApplicationController
         format.html { redirect_to @livro, notice: 'Livro was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @livro.errors.full_messages, status: :unprocessable_entity }
+        @photos = @livro.photos
+        flash[:error] = @livro.errors.full_messages
+        format.html { render action: "new"}
+        format.json { render json: @livro.errors, status: :unprocessable_entity }
       end
     end
   end
