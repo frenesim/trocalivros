@@ -24,12 +24,20 @@
         .offset1="#{@livro.preco} €"
   .span3
     .well
-      %strong= 'Fotos:'
+      %strong Fotos:
       .row-fluid.offset1
         .span12
           .span6
             -@livro.photos.each do |p|
               =image_tag p.image_url(:thumb)
+  .span10.well.well-large
+    %p
+      %strong Descrição:
+      %br
+        .offset1= @livro.description
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), redirect_back, :class => 'btn'
-  = link_to t('.contact', :default => t("helpers.links.contact")), livro_user_path(@livro), :class => 'btn'
+  -if @livro.user_id == current_user.id
+    = link_to t('.edit', :default => t("helpers.links.edit")), edit_livro_path(@livro), :class => 'btn'
+  -else
+    = link_to t('.contact', :default => t("helpers.links.contact")), livro_user_path(@livro), :class => 'btn'

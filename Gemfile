@@ -15,9 +15,9 @@ group :development, :test do
   gem 'launchy'
   gem 'nifty-generators'
   gem 'immigrant'
-  gem "seed_dump", "~> 0.4.2"
+  gem 'seed_dump', '~> 0.4.2'
   gem 'rspec-rails', '~> 2.0'
-  gem "factory_girl_rails", "~> 4.0"
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'erb2haml'
 end
 
@@ -37,9 +37,9 @@ group :assets do
   gem 'sass-rails'
   gem 'bootstrap-sass'
   gem 'bootswatch-rails'
-  gem "therubyracer"
-  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-  gem "twitter-bootstrap-rails"
+  gem 'therubyracer'
+  gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+  gem 'twitter-bootstrap-rails'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '~> 1.0.3'
 end
@@ -51,12 +51,11 @@ end
 gem 'activeadmin'
 
 gem 'foreigner'
-gem "jquery-rails", "< 3.0.0"
+gem 'jquery-rails', '< 3.0.0'
 gem 'jquery-ui-rails'
-gem "jquery-fileupload-rails"
-gem 'bootstrap-addons-rails'
+gem 'jquery-fileupload-rails'
 
-gem "cancan"
+gem 'cancan'
 
 gem 'haml-rails'
 

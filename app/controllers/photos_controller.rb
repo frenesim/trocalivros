@@ -22,11 +22,10 @@ class PhotosController < ApplicationController
     livro_id = @photo.livro_id
     @photo.destroy
     session[:photos_ids].delete(@photo.id) unless session[:photos_ids].empty?
-    if livro_id
-      redirect_to edit_livro_path(livro_id)
-    else
-      render :json => true
-    end
+    redirect_to edit_livro_path(livro_id) if livro_id
+#    else
+#      render :json => true
+#    end
 
   end
 

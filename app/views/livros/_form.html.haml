@@ -1,35 +1,42 @@
 = form_for @livro, :html => {:multipart => true, :class => 'form-horizontal', :id => 'fileupload'} do |f|
-  .control-group
-    = f.label :nome, :class => 'control-label'
-    .controls
-      = f.text_field :nome
-  .control-group
-    = f.label :disciplina_id, :class => 'control-label'
-    .controls
-      = collection_select :livro, :disciplina_id, Disciplina.all, "id", "nome", {:include_blank => true}
-  .control-group
-    = f.label :editora_id, :class => 'control-label'
-    .controls
-      = collection_select :livro, :editora_id, Editora.all, "id", "nome", {:include_blank => true}
-  .control-group
-    = f.label "Escolaridade", :class => 'control-label'
-    .controls
-      = f.select :ano_escolaridade, options_for_select((5..12).map{|a| a.to_s+"º"},@livro.ano_escolaridade.to_s+"º"), {:include_blank => true},:class=>"span1"
-      Ano
-  .control-group
-    = f.label "Autor", :class => 'control-label'
-    .controls
-      = collection_select :livro, :autore_id, Autore.all, "id", "nome", {:include_blank => true}
-  .control-group
-    = f.label "Preço", :class => 'control-label'
-    .controls
-      = f.number_field :preco, :class => 'number_field', :class=>"span1"
-      (€)
+  .row-fluid
+    .span4
+      .control-group
+        = f.label :nome, :class => 'control-label'
+        .controls
+          = f.text_field :nome
+      .control-group
+        = f.label :disciplina_id, :class => 'control-label'
+        .controls
+          = collection_select :livro, :disciplina_id, Disciplina.all, 'id', 'nome', {:include_blank => true}
+      .control-group
+        = f.label :editora_id, :class => 'control-label'
+        .controls
+          = collection_select :livro, :editora_id, Editora.all, 'id', 'nome', {:include_blank => true}
+      .control-group
+        = f.label 'Escolaridade', :class => 'control-label'
+        .controls
+          = f.select :ano_escolaridade, options_for_select((5..12).map{|a| a.to_s+'º'},@livro.ano_escolaridade.to_s+'º'), {:include_blank => true},:class=>'span4'
+          Ano
+      .control-group
+        = f.label 'Autor', :class => 'control-label'
+        .controls
+          = collection_select :livro, :autore_id, Autore.all, 'id', 'nome', {:include_blank => true}
+      .control-group
+        = f.label 'Preço', :class => 'control-label'
+        .controls
+          = f.number_field :preco, :class => 'number_field', :class=>'span4'
+          (€)
+    .span8
+      .row-fluid
+        = f.label 'Descrição:', :class => 'control-label'
+      .row-fluid
+        .offset1
+          = f.text_area :description,rows:4, class:'span8', placeholder: t('livro.description.placeholder')
   .row.fileupload-buttonbar
     -unless @photos.nil? #||=Photo.find(session[:photos_ids]) unless session[:photos_ids].empty?
       -@photos.each do |photo|
         =render :partial => "edit_photos", locals: {p: photo}
-
     .control-group
       .controls
         %span.btn.btn-success.fileinput-button

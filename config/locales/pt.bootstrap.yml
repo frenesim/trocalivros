@@ -5,6 +5,8 @@ pt:
   livro:
     delete:
       confirm: "Deseja apagar o Livro %{name} ?"
+    description:
+      placeholder: 'Descreva aqui o estado em que o manual escolar se encontra.'
   photo:
     delete:
       confirm: "Deseja apagar a photo?"

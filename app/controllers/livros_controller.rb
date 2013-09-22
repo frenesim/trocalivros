@@ -26,6 +26,7 @@ class LivrosController < ApplicationController
     session[:photos_ids].clear unless session[:photos_ids].nil?
     @livro = Livro.new
     @livro.photos.build
+    destroy_lost_photos
       respond_to do |format|
         format.html # new.html.erb
         #format.json { render json: @livro }
@@ -34,6 +35,7 @@ class LivrosController < ApplicationController
 
   # GET /livros/1/edit
   def edit
+    session[:photos_ids].clear unless session[:photos_ids].nil?
     @livro = Livro.find(params[:id])
     @photos = @livro.photos
     #@livro.photos.build
@@ -98,9 +100,9 @@ class LivrosController < ApplicationController
   private
   def save_photos_ids(livro_id)
     unless session[:photos_ids].nil?
-      @photos = Photo.where(id: session[:photos_ids]).where(user_id: current_user.id)
+      photos = Photo.where(id: session[:photos_ids]).where(user_id: current_user.id)
       session[:photos_ids].clear
-      @photos.each do |p|
+      photos.each do |p|
         p.update_attributes( { livro_id: livro_id } ) if p.livro_id.nil?
       end
     end
@@ -108,5 +110,9 @@ class LivrosController < ApplicationController
 
   def set_session
     session[:photos_ids] ||= []
+  end
+
+  def destroy_lost_photos
+    Photo.destroy_all(livro_id:nil, user_id: current_user.id)
   end
 end
