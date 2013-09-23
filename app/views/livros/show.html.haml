@@ -28,16 +28,26 @@
       .row-fluid.offset1
         .span12
           .span6
-            -@livro.photos.each do |p|
-              =image_tag p.image_url(:thumb)
+            #links
+              -@livro.photos.each do |p|
+                =link_to image_tag(p.image_url(:thumb)), (p.image_url).to_s
   .span10.well.well-large
     %p
       %strong Descrição:
       %br
         .offset1= @livro.description
 .form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), redirect_back, :class => 'btn'
+  = link_to t("helpers.links.back"), redirect_back, :class => 'btn'
   -if @livro.user_id == current_user.id
-    = link_to t('.edit', :default => t("helpers.links.edit")), edit_livro_path(@livro), :class => 'btn'
+    = link_to t("helpers.links.edit"), edit_livro_path(@livro), :class => 'btn'
   -else
-    = link_to t('.contact', :default => t("helpers.links.contact")), livro_user_path(@livro), :class => 'btn'
+    = link_to t("helpers.links.contact"), livro_user_path(@livro), :class => 'btn'
+#blueimp-gallery.blueimp-gallery
+  .slides
+    %h3.title
+    %a.prev‹
+    %a.next›
+    %a.close×
+    %a.play-pause
+    %ol.indicator
+

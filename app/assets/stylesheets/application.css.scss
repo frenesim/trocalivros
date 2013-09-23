@@ -21,7 +21,7 @@ footer {padding-top: 30px;}
 @import "bootswatch/readable/bootswatch";
 
 // Whatever application styles you have go last
-@import 'blueimp-gallery.min';
+@import 'blueimp-gallery';
 @import 'jquery.fileupload-ui';
 @import 'livros';
 @import 'users';
