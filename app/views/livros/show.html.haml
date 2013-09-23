@@ -1,9 +1,18 @@
 - model_class = Livro
 .row-fluid
-  .well.span6.offset1
+  .well.span6.offset1.left
     %h2=@livro.nome
     %h4=@livro.disciplina.nome
-.row-fluid
+  .span2
+    .well
+      %strong Fotos:
+      .row-fluid.offset1
+        .span9
+          #links
+            -@livro.photos.each do |p|
+              .thumbnail
+                =link_to image_tag(p.image_url(:thumb), class:'img-rounded img-responsive'), p.image_url
+
   .span3.offset1.well.well-large
     %p
       %strong= model_class.human_attribute_name(:editora_id) + ':'
@@ -22,15 +31,6 @@
       %strong Preço em Euros:
       %br
         .offset1="#{@livro.preco} €"
-  .span3
-    .well
-      %strong Fotos:
-      .row-fluid.offset1
-        .span12
-          .span6
-            #links
-              -@livro.photos.each do |p|
-                =link_to image_tag(p.image_url(:thumb)), (p.image_url).to_s
   .span10.well.well-large
     %p
       %strong Descrição:
@@ -38,7 +38,7 @@
         .offset1= @livro.description
 .form-actions
   = link_to t("helpers.links.back"), redirect_back, :class => 'btn'
-  -if @livro.user_id == current_user.id
+  -if @livro.user_id == current_user.object_id
     = link_to t("helpers.links.edit"), edit_livro_path(@livro), :class => 'btn'
   -else
     = link_to t("helpers.links.contact"), livro_user_path(@livro), :class => 'btn'
