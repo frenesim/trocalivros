@@ -1,11 +1,11 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 ruby '2.0.0'
 
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+# gem 'rails', :git => 'git://github.com/rails/rails'
 
 
 group :development, :test do
@@ -35,7 +35,7 @@ end
 # in production environments by default.
 group :assets do
   gem 'sass-rails'
-  gem 'bootstrap-sass'
+  gem 'bootstrap-sass', github: 'frenesim/bootstrap-sass'
   gem 'bootswatch-rails'
   gem 'therubyracer'
   gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
