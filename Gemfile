@@ -26,7 +26,7 @@ group :test do
   gem 'capybara'
   gem 'guard-rspec'
   gem 'launchy'
-  gem "minitest"
+  gem 'minitest'
   gem 'cucumber-rails', :require => false
   gem 'mocha', :require => false
 end
