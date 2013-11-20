@@ -1,7 +1,5 @@
 source 'http://rubygems.org'
 
-ruby '2.0.0'
-
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
@@ -35,10 +33,10 @@ end
 # in production environments by default.
 group :assets do
   gem 'sass-rails'
-  gem 'bootstrap-sass', github: 'frenesim/bootstrap-sass'
+  gem 'bootstrap-sass'
   gem 'bootswatch-rails'
   gem 'therubyracer'
-  gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+  gem 'less-rails'
   gem 'twitter-bootstrap-rails'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '~> 1.0.3'
