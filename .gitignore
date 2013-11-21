@@ -20,3 +20,5 @@
 /.idea
 /public/system/photos/
 /public/uploads/
+
+/.ruby-*
