@@ -1,5 +1,5 @@
 class Livro < ActiveRecord::Base
-  attr_accessible :ano_escolaridade, :autore_id, :editora_id, :nome, :preco, :disciplina_id, :user_id, :photos_attributes
+  attr_accessible :ano_escolaridade, :autore_id, :editora_id, :nome, :preco, :disciplina_id, :user_id, :photos_attributes, :description
 
   belongs_to :autore
   belongs_to :disciplina

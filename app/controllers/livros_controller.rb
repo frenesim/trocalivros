@@ -100,7 +100,7 @@ class LivrosController < ApplicationController
   private
   def save_photos_ids(livro_id)
     unless session[:photos_ids].nil?
-      photos = Photo.where(id: session[:photos_ids]).where(user_id: current_user.object_id)
+      photos = Photo.where(id: session[:photos_ids]).where(user_id: current_user.id)
       session[:photos_ids].clear
       photos.each do |p|
         p.update_attributes( { livro_id: livro_id } ) if p.livro_id.nil?
