@@ -1,41 +1,41 @@
 - model_class = Livro
-.row-fluid.span6
-  .row-fluid.span12.well
-    %h2=@livro.nome
-    %h4=@livro.disciplina.nome
-  .row-fluid.span6.well
-    %p
-      %strong= model_class.human_attribute_name(:editora_id) + ':'
-      %br
-        .offset1= @livro.editora.nome
-    %p
-      %strong= model_class.human_attribute_name(:ano_escolaridade) + ':'
-      %br
-        .offset1= "#{@livro.ano_escolaridade}º ano"
-  .row-fluid.span6.well.well-large
-    %p
-      %strong Autor:
-      %br
-        .offset1= @livro.autore.nome
-    %p
-      %strong Preço em Euros:
-      %br
-        .offset1="#{@livro.preco} €"
-.row-fluid.span4
-  .span2
-    .well
-      %strong Fotos:
-      .row-fluid.offset1
-        .span9
-          #links
-            -@livro.photos.each do |p|
-              .thumbnail
-                =link_to image_tag(p.image_url(:thumb), class:'img-rounded img-responsive'), p.image_url
-  .span10.well.well-large
-    %p
-      %strong Descrição:
-      %br
-        .offset1= @livro.description
+.row-fluid
+  .span6
+    .span12.well
+      %h2=@livro.nome
+      %h4=@livro.disciplina.nome
+    .row-fluid
+      .span6.well
+        %p
+          %strong= model_class.human_attribute_name(:editora_id) + ':'
+          %br
+            .offset1= @livro.editora.nome
+        %p
+          %strong= model_class.human_attribute_name(:ano_escolaridade) + ':'
+          %br
+            .offset1= "#{@livro.ano_escolaridade}º ano"
+      .span6.well.well-large
+        %p
+          %strong Autor:
+          %br
+            .offset1= @livro.autore.nome
+        %p
+          %strong Preço em Euros:
+          %br
+            .offset1="#{@livro.preco} €"
+    .row-fluid
+      .well.well-large
+        %p
+          %strong Descrição:
+          %br
+            .offset1= @livro.description
+  .span6.well
+    %strong Fotos:
+    .row-fluid
+      .span12
+        #links
+          -@livro.photos.each do |p|
+            =link_to image_tag(p.image_url(:thumb), class:'img-rounded img-responsive thumbnail'), p.image_url
 .form-actions
   = link_to t('helpers.links.back'), redirect_back, :class => 'btn'
   -if @livro.user_id == current_user.id
